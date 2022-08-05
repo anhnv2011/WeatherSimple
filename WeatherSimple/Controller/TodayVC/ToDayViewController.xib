@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ToDayViewController" customModule="WeatherSimple" customModuleProvider="target">
+            <connections>
+                <outlet property="circleToDayView" destination="zsE-JY-A2h" id="Wkc-Cz-f9F"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nmB-KL-6cE" userLabel="RootView">
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zsE-JY-A2h">
+                            <rect key="frame" x="87" y="157" width="249" height="223"/>
+                            <color key="backgroundColor" systemColor="systemYellowColor"/>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="zsE-JY-A2h" firstAttribute="leading" secondItem="nmB-KL-6cE" secondAttribute="leading" constant="87" id="Ivt-d3-Ggt"/>
+                        <constraint firstItem="zsE-JY-A2h" firstAttribute="top" secondItem="nmB-KL-6cE" secondAttribute="top" constant="157" id="ezG-PV-ZEc"/>
+                        <constraint firstAttribute="trailing" secondItem="zsE-JY-A2h" secondAttribute="trailing" constant="78" id="qlO-fJ-Qbf"/>
+                        <constraint firstAttribute="bottom" secondItem="zsE-JY-A2h" secondAttribute="bottom" constant="438" id="ugk-V7-Yy8"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="nmB-KL-6cE" secondAttribute="bottom" id="4PW-ew-t7D"/>
+                <constraint firstItem="nmB-KL-6cE" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="ZqM-HZ-jmu"/>
+                <constraint firstItem="nmB-KL-6cE" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="eKb-i9-bmr"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="nmB-KL-6cE" secondAttribute="trailing" id="xaS-af-F8M"/>
+            </constraints>
+            <point key="canvasLocation" x="-146.37681159420291" y="48.883928571428569"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

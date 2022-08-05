@@ -1,0 +1,34 @@
+PODS:
+  - Alamofire (4.9.1)
+  - EzPopup (1.2.4)
+  - SDWebImage (5.12.5):
+    - SDWebImage/Core (= 5.12.5)
+  - SDWebImage/Core (5.12.5)
+  - SideMenu (6.5.0)
+  - SwiftyJSON (5.0.1)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.9.1)
+  - EzPopup
+  - SDWebImage
+  - SideMenu
+  - SwiftyJSON
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - EzPopup
+    - SDWebImage
+    - SideMenu
+    - SwiftyJSON
+
+SPEC CHECKSUMS:
+  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  EzPopup: 37f2c40e8ce50412a269bfba365baa7085c28002
+  SDWebImage: 0905f1b7760fc8ac4198cae0036600d67478751e
+  SideMenu: f583187d21c5b1dd04c72002be544b555a2627a2
+  SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
+
+PODFILE CHECKSUM: 88dea38f0f5014e0d9519da041b54a6b641a6b75
+
+COCOAPODS: 1.11.3
