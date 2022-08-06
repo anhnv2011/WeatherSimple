@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ToDayViewController" customModule="WeatherSimple" customModuleProvider="target">
             <connections>
-                <outlet property="circleToDayView" destination="zsE-JY-A2h" id="Wkc-Cz-f9F"/>
+                <outlet property="collectionView" destination="WtQ-KB-lBj" id="chr-dI-oMa"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -22,17 +22,23 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nmB-KL-6cE" userLabel="RootView">
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zsE-JY-A2h">
-                            <rect key="frame" x="87" y="157" width="249" height="223"/>
-                            <color key="backgroundColor" systemColor="systemYellowColor"/>
-                        </view>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="WtQ-KB-lBj">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hhr-EJ-Cxt">
+                                <size key="itemSize" width="128" height="128"/>
+                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </collectionViewFlowLayout>
+                        </collectionView>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
-                        <constraint firstItem="zsE-JY-A2h" firstAttribute="leading" secondItem="nmB-KL-6cE" secondAttribute="leading" constant="87" id="Ivt-d3-Ggt"/>
-                        <constraint firstItem="zsE-JY-A2h" firstAttribute="top" secondItem="nmB-KL-6cE" secondAttribute="top" constant="157" id="ezG-PV-ZEc"/>
-                        <constraint firstAttribute="trailing" secondItem="zsE-JY-A2h" secondAttribute="trailing" constant="78" id="qlO-fJ-Qbf"/>
-                        <constraint firstAttribute="bottom" secondItem="zsE-JY-A2h" secondAttribute="bottom" constant="438" id="ugk-V7-Yy8"/>
+                        <constraint firstAttribute="trailing" secondItem="WtQ-KB-lBj" secondAttribute="trailing" id="9H1-np-Jhf"/>
+                        <constraint firstItem="WtQ-KB-lBj" firstAttribute="leading" secondItem="nmB-KL-6cE" secondAttribute="leading" id="PT8-1L-9ZH"/>
+                        <constraint firstItem="WtQ-KB-lBj" firstAttribute="top" secondItem="nmB-KL-6cE" secondAttribute="top" id="UEs-96-yOU"/>
+                        <constraint firstAttribute="bottom" secondItem="WtQ-KB-lBj" secondAttribute="bottom" id="lYl-0B-q1Y"/>
                     </constraints>
                 </view>
             </subviews>
@@ -50,9 +56,6 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemYellowColor">
-            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

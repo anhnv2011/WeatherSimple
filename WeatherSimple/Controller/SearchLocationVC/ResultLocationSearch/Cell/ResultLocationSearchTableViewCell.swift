@@ -10,6 +10,9 @@ import UIKit
 class ResultLocationSearchTableViewCell: UITableViewCell {
 
     static let identify = "ResultLocationSearchTableViewCell"
+    
+    @IBOutlet weak var locationLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -17,8 +20,10 @@ class ResultLocationSearchTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    }
+    
+    func configCell(location: String){
+        locationLabel.text = location
     }
     
 }

@@ -56,8 +56,7 @@ class MenuHeaderView: UITableViewHeaderFooterView {
    
     @objc func tapSettingButton(){
         
-        print("asdasdasdasdasdasdasd")
-        //delegate?.tapSettingButton()
+        delegate?.tapSettingButton()
     }
 
     func setupLayout(){

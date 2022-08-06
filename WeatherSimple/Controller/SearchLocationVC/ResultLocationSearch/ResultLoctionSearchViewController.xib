@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ResultLoctionSearchViewController" customModule="WeatherSimple" customModuleProvider="target">
             <connections>
+                <outlet property="searchTextField" destination="i3J-4r-ehY" id="Dje-w8-oOT"/>
                 <outlet property="tableView" destination="TpD-LL-Qcu" id="6uI-og-v0X"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -19,20 +20,40 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TpD-LL-Qcu">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o4y-CL-p6T" userLabel="ContainView">
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <subviews>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="i3J-4r-ehY">
+                            <rect key="frame" x="8" y="8" width="398" height="34"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TpD-LL-Qcu">
+                            <rect key="frame" x="0.0" y="62" width="414" height="748"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        </tableView>
+                    </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                </tableView>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="i3J-4r-ehY" secondAttribute="trailing" constant="8" id="8p4-x3-2vZ"/>
+                        <constraint firstAttribute="trailing" secondItem="TpD-LL-Qcu" secondAttribute="trailing" id="Sex-O9-be0"/>
+                        <constraint firstItem="i3J-4r-ehY" firstAttribute="leading" secondItem="o4y-CL-p6T" secondAttribute="leading" constant="8" id="ZDp-Ta-sJy"/>
+                        <constraint firstItem="TpD-LL-Qcu" firstAttribute="top" secondItem="i3J-4r-ehY" secondAttribute="bottom" constant="20" id="iJL-74-EPX"/>
+                        <constraint firstAttribute="bottom" secondItem="TpD-LL-Qcu" secondAttribute="bottom" constant="8" id="jrR-9b-o8l"/>
+                        <constraint firstItem="TpD-LL-Qcu" firstAttribute="leading" secondItem="o4y-CL-p6T" secondAttribute="leading" id="vjS-6h-PZY"/>
+                        <constraint firstItem="i3J-4r-ehY" firstAttribute="top" secondItem="o4y-CL-p6T" secondAttribute="top" constant="8" id="zC2-xN-DK2"/>
+                    </constraints>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="TpD-LL-Qcu" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="41Z-cE-nmV"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="TpD-LL-Qcu" secondAttribute="bottom" id="PDf-9f-Fna"/>
-                <constraint firstItem="TpD-LL-Qcu" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="WjE-hN-5ho"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="TpD-LL-Qcu" secondAttribute="trailing" id="vHr-SQ-Qqf"/>
+                <constraint firstItem="o4y-CL-p6T" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="VSm-WF-qCl"/>
+                <constraint firstItem="o4y-CL-p6T" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="W93-H8-dK1"/>
+                <constraint firstItem="o4y-CL-p6T" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="ajd-06-7OB"/>
+                <constraint firstItem="o4y-CL-p6T" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="sxG-bo-gSm"/>
             </constraints>
-            <point key="canvasLocation" x="91" y="59"/>
+            <point key="canvasLocation" x="89.855072463768124" y="58.928571428571423"/>
         </view>
     </objects>
     <resources>

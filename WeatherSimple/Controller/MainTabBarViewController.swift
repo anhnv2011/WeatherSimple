@@ -77,6 +77,11 @@ class MainTabBarViewController: UITabBarController {
     
 }
 extension MainTabBarViewController: MenuViewControllerDelegate{
+    func didTapSetting() {
+        menu?.dismiss(animated: true, completion: nil)
+        navigationController?.pushViewController(SettingViewController(), animated: true)
+    }
+    
     func didSelectedMenu(url: URL) {
         let vc = SFSafariViewController(url: url)
         menu?.dismiss(animated: true, completion: nil)

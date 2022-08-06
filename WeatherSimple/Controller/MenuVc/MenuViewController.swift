@@ -8,6 +8,7 @@
 import UIKit
 protocol MenuViewControllerDelegate: AnyObject {
     func didSelectedMenu(url: URL)
+    func didTapSetting()
 }
 class MenuViewController: UIViewController {
 
@@ -24,9 +25,9 @@ class MenuViewController: UIViewController {
     func configTableView(){
         tableView.delegate = self
         tableView.dataSource = self
-//        tableView.register(MenuHeaderView.self, forHeaderFooterViewReuseIdentifier: MenuHeaderView.identifier)
-        tableView.tableHeaderView = menuHeader
-        menuHeader = MenuHeaderView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
+        tableView.register(MenuHeaderView.self, forHeaderFooterViewReuseIdentifier: "header")
+//        tableView.tableHeaderView = menuHeader
+//        menuHeader = MenuHeaderView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
     }
 }
 extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
@@ -47,11 +48,19 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
         delegate?.didSelectedMenu(url: url)
     }
     
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: MenuHeaderView.identifier)
-//        return header
-//    }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "header") as! MenuHeaderView
+        header.delegate = self
+        return header
+    }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         100
     }
+}
+extension MenuViewController: MenuHeaderViewDelegate{
+    func tapSettingButton() {
+        delegate?.didTapSetting()
+    }
+    
+    
 }

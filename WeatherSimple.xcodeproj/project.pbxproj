@@ -35,6 +35,24 @@
 		04494C96289D718500672604 /* ResultLoctionSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04494C94289D718500672604 /* ResultLoctionSearchViewController.xib */; };
 		04494C9C289D72AC00672604 /* ResultLocationSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04494C9A289D72AC00672604 /* ResultLocationSearchTableViewCell.swift */; };
 		04494C9D289D72AC00672604 /* ResultLocationSearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04494C9B289D72AC00672604 /* ResultLocationSearchTableViewCell.xib */; };
+		046676A5289E4CF500A19620 /* SearchLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046676A4289E4CF500A19620 /* SearchLocation.swift */; };
+		046676A8289E4D2A00A19620 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046676A7289E4D2A00A19620 /* Country.swift */; };
+		046676AB289E4D4600A19620 /* AdministrativeArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046676AA289E4D4600A19620 /* AdministrativeArea.swift */; };
+		046676AF289E5B5200A19620 /* LocationModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 046676AD289E5B5200A19620 /* LocationModel.xcdatamodeld */; };
+		046676D1289E66A300A19620 /* Location+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046676CF289E66A300A19620 /* Location+CoreDataProperties.swift */; };
+		046676D2289E66A300A19620 /* Location+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046676D0289E66A300A19620 /* Location+CoreDataClass.swift */; };
+		046676DC289E68AA00A19620 /* WeatherCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046676DA289E68AA00A19620 /* WeatherCollectionViewCell.swift */; };
+		046676DD289E68AA00A19620 /* WeatherCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 046676DB289E68AA00A19620 /* WeatherCollectionViewCell.xib */; };
+		046676E2289E68C000A19620 /* DetailWeatherCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046676E0289E68C000A19620 /* DetailWeatherCollectionViewCell.swift */; };
+		046676E3289E68C000A19620 /* DetailWeatherCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 046676E1289E68C000A19620 /* DetailWeatherCollectionViewCell.xib */; };
+		046676E7289E68D200A19620 /* ConditionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046676E5289E68D200A19620 /* ConditionCollectionViewCell.swift */; };
+		046676E8289E68D200A19620 /* ConditionCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 046676E6289E68D200A19620 /* ConditionCollectionViewCell.xib */; };
+		046676EC289E68E800A19620 /* AirConditonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046676EA289E68E800A19620 /* AirConditonCollectionViewCell.swift */; };
+		046676ED289E68E800A19620 /* AirConditonCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 046676EB289E68E800A19620 /* AirConditonCollectionViewCell.xib */; };
+		046676F2289E73AD00A19620 /* CardViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046676F0289E73AD00A19620 /* CardViewViewController.swift */; };
+		046676F3289E73AD00A19620 /* CardViewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 046676F1289E73AD00A19620 /* CardViewViewController.xib */; };
+		0476EC62289E0E780098E098 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0476EC60289E0E780098E098 /* SettingViewController.swift */; };
+		0476EC63289E0E780098E098 /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0476EC61289E0E780098E098 /* SettingViewController.xib */; };
 		E210FF90CE109D1E9CA3467B /* Pods_WeatherSimple.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB715F473D4C664C4E73F963 /* Pods_WeatherSimple.framework */; };
 /* End PBXBuildFile section */
 
@@ -69,6 +87,24 @@
 		04494C94289D718500672604 /* ResultLoctionSearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultLoctionSearchViewController.xib; sourceTree = "<group>"; };
 		04494C9A289D72AC00672604 /* ResultLocationSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultLocationSearchTableViewCell.swift; sourceTree = "<group>"; };
 		04494C9B289D72AC00672604 /* ResultLocationSearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultLocationSearchTableViewCell.xib; sourceTree = "<group>"; };
+		046676A4289E4CF500A19620 /* SearchLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocation.swift; sourceTree = "<group>"; };
+		046676A7289E4D2A00A19620 /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
+		046676AA289E4D4600A19620 /* AdministrativeArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdministrativeArea.swift; sourceTree = "<group>"; };
+		046676AE289E5B5200A19620 /* LocationModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LocationModel.xcdatamodel; sourceTree = "<group>"; };
+		046676CF289E66A300A19620 /* Location+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		046676D0289E66A300A19620 /* Location+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataClass.swift"; sourceTree = "<group>"; };
+		046676DA289E68AA00A19620 /* WeatherCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCollectionViewCell.swift; sourceTree = "<group>"; };
+		046676DB289E68AA00A19620 /* WeatherCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeatherCollectionViewCell.xib; sourceTree = "<group>"; };
+		046676E0289E68C000A19620 /* DetailWeatherCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWeatherCollectionViewCell.swift; sourceTree = "<group>"; };
+		046676E1289E68C000A19620 /* DetailWeatherCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailWeatherCollectionViewCell.xib; sourceTree = "<group>"; };
+		046676E5289E68D200A19620 /* ConditionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionCollectionViewCell.swift; sourceTree = "<group>"; };
+		046676E6289E68D200A19620 /* ConditionCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConditionCollectionViewCell.xib; sourceTree = "<group>"; };
+		046676EA289E68E800A19620 /* AirConditonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirConditonCollectionViewCell.swift; sourceTree = "<group>"; };
+		046676EB289E68E800A19620 /* AirConditonCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AirConditonCollectionViewCell.xib; sourceTree = "<group>"; };
+		046676F0289E73AD00A19620 /* CardViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewViewController.swift; sourceTree = "<group>"; };
+		046676F1289E73AD00A19620 /* CardViewViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardViewViewController.xib; sourceTree = "<group>"; };
+		0476EC60289E0E780098E098 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		0476EC61289E0E780098E098 /* SettingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
 		33C7FE7C4D8DD500791F6CF2 /* Pods-WeatherSimple.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherSimple.debug.xcconfig"; path = "Target Support Files/Pods-WeatherSimple/Pods-WeatherSimple.debug.xcconfig"; sourceTree = "<group>"; };
 		CB715F473D4C664C4E73F963 /* Pods_WeatherSimple.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherSimple.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6113CD2178AD854D04FC8D8 /* Pods-WeatherSimple.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherSimple.release.xcconfig"; path = "Target Support Files/Pods-WeatherSimple/Pods-WeatherSimple.release.xcconfig"; sourceTree = "<group>"; };
@@ -107,6 +143,7 @@
 		0441431A289CDA6F00F7179A /* WeatherSimple */ = {
 			isa = PBXGroup;
 			children = (
+				046676AD289E5B5200A19620 /* LocationModel.xcdatamodeld */,
 				04414332289CDA8B00F7179A /* AppDelegate */,
 				0441433C289CDB1400F7179A /* Manager */,
 				0441433B289CDB0800F7179A /* Model */,
@@ -137,6 +174,7 @@
 				04424075289CF83A00E332D9 /* ByDayVC */,
 				04424076289CF85300E332D9 /* RadaVC */,
 				04494C8B289D60D000672604 /* SearchLocationVC */,
+				0476EC5F289E0E4F0098E098 /* SettingVC */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -144,6 +182,7 @@
 		04414334289CDACB00F7179A /* TodayVC */ = {
 			isa = PBXGroup;
 			children = (
+				046676D4289E680400A19620 /* Cell */,
 				04414335289CDB0000F7179A /* ToDayViewController.swift */,
 				04414336289CDB0000F7179A /* ToDayViewController.xib */,
 				044240DB289D379200E332D9 /* CircleView.swift */,
@@ -154,6 +193,9 @@
 		0441433B289CDB0800F7179A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				046676D0289E66A300A19620 /* Location+CoreDataClass.swift */,
+				046676CF289E66A300A19620 /* Location+CoreDataProperties.swift */,
+				046676A3289E4CD700A19620 /* Object */,
 				04494CA0289D761800672604 /* Enum */,
 			);
 			path = Model;
@@ -180,6 +222,7 @@
 		04424075289CF83A00E332D9 /* ByDayVC */ = {
 			isa = PBXGroup;
 			children = (
+				046676EF289E738B00A19620 /* CardView */,
 				0442407D289CF88500E332D9 /* ByDayViewController.swift */,
 				0442407E289CF88500E332D9 /* ByDayViewController.xib */,
 			);
@@ -242,6 +285,81 @@
 				044240A3289D0A8800E332D9 /* SideMenuItem.swift */,
 			);
 			path = Enum;
+			sourceTree = "<group>";
+		};
+		046676A3289E4CD700A19620 /* Object */ = {
+			isa = PBXGroup;
+			children = (
+				046676A4289E4CF500A19620 /* SearchLocation.swift */,
+				046676A7289E4D2A00A19620 /* Country.swift */,
+				046676AA289E4D4600A19620 /* AdministrativeArea.swift */,
+			);
+			path = Object;
+			sourceTree = "<group>";
+		};
+		046676D4289E680400A19620 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				046676D9289E687C00A19620 /* AirCell */,
+				046676D8289E686A00A19620 /* ConditonCell */,
+				046676D7289E685900A19620 /* DetailCell */,
+				046676D6289E684800A19620 /* WeatherCell */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		046676D6289E684800A19620 /* WeatherCell */ = {
+			isa = PBXGroup;
+			children = (
+				046676DA289E68AA00A19620 /* WeatherCollectionViewCell.swift */,
+				046676DB289E68AA00A19620 /* WeatherCollectionViewCell.xib */,
+			);
+			path = WeatherCell;
+			sourceTree = "<group>";
+		};
+		046676D7289E685900A19620 /* DetailCell */ = {
+			isa = PBXGroup;
+			children = (
+				046676E0289E68C000A19620 /* DetailWeatherCollectionViewCell.swift */,
+				046676E1289E68C000A19620 /* DetailWeatherCollectionViewCell.xib */,
+			);
+			path = DetailCell;
+			sourceTree = "<group>";
+		};
+		046676D8289E686A00A19620 /* ConditonCell */ = {
+			isa = PBXGroup;
+			children = (
+				046676E5289E68D200A19620 /* ConditionCollectionViewCell.swift */,
+				046676E6289E68D200A19620 /* ConditionCollectionViewCell.xib */,
+			);
+			path = ConditonCell;
+			sourceTree = "<group>";
+		};
+		046676D9289E687C00A19620 /* AirCell */ = {
+			isa = PBXGroup;
+			children = (
+				046676EA289E68E800A19620 /* AirConditonCollectionViewCell.swift */,
+				046676EB289E68E800A19620 /* AirConditonCollectionViewCell.xib */,
+			);
+			path = AirCell;
+			sourceTree = "<group>";
+		};
+		046676EF289E738B00A19620 /* CardView */ = {
+			isa = PBXGroup;
+			children = (
+				046676F0289E73AD00A19620 /* CardViewViewController.swift */,
+				046676F1289E73AD00A19620 /* CardViewViewController.xib */,
+			);
+			path = CardView;
+			sourceTree = "<group>";
+		};
+		0476EC5F289E0E4F0098E098 /* SettingVC */ = {
+			isa = PBXGroup;
+			children = (
+				0476EC60289E0E780098E098 /* SettingViewController.swift */,
+				0476EC61289E0E780098E098 /* SettingViewController.xib */,
+			);
+			path = SettingVC;
 			sourceTree = "<group>";
 		};
 		3408494921FAF058506AC7E9 /* Pods */ = {
@@ -325,11 +443,17 @@
 				04414328289CDA7200F7179A /* LaunchScreen.storyboard in Resources */,
 				04494C9D289D72AC00672604 /* ResultLocationSearchTableViewCell.xib in Resources */,
 				04414338289CDB0000F7179A /* ToDayViewController.xib in Resources */,
+				046676DD289E68AA00A19620 /* WeatherCollectionViewCell.xib in Resources */,
 				04494C96289D718500672604 /* ResultLoctionSearchViewController.xib in Resources */,
 				04414325289CDA7200F7179A /* Assets.xcassets in Resources */,
+				0476EC63289E0E780098E098 /* SettingViewController.xib in Resources */,
+				046676E3289E68C000A19620 /* DetailWeatherCollectionViewCell.xib in Resources */,
+				046676ED289E68E800A19620 /* AirConditonCollectionViewCell.xib in Resources */,
+				046676E8289E68D200A19620 /* ConditionCollectionViewCell.xib in Resources */,
 				0442409A289CFCFE00E332D9 /* MenuViewController.xib in Resources */,
 				04494C8F289D611800672604 /* SearchLocationViewController.xib in Resources */,
 				0442407A289CF86A00E332D9 /* HourlyViewController.xib in Resources */,
+				046676F3289E73AD00A19620 /* CardViewViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -389,16 +513,28 @@
 				04414337289CDB0000F7179A /* ToDayViewController.swift in Sources */,
 				04424084289CF89400E332D9 /* RadaViewController.swift in Sources */,
 				04424093289CFA0500E332D9 /* MainTabBarViewController.swift in Sources */,
+				046676F2289E73AD00A19620 /* CardViewViewController.swift in Sources */,
+				046676A8289E4D2A00A19620 /* Country.swift in Sources */,
+				046676D1289E66A300A19620 /* Location+CoreDataProperties.swift in Sources */,
 				044240DC289D379200E332D9 /* CircleView.swift in Sources */,
+				046676E2289E68C000A19620 /* DetailWeatherCollectionViewCell.swift in Sources */,
 				04494C8E289D611800672604 /* SearchLocationViewController.swift in Sources */,
+				046676DC289E68AA00A19620 /* WeatherCollectionViewCell.swift in Sources */,
 				04494C9C289D72AC00672604 /* ResultLocationSearchTableViewCell.swift in Sources */,
 				04424099289CFCFE00E332D9 /* MenuViewController.swift in Sources */,
+				046676D2289E66A300A19620 /* Location+CoreDataClass.swift in Sources */,
 				0441431E289CDA6F00F7179A /* SceneDelegate.swift in Sources */,
 				044240D6289D2BA400E332D9 /* MenuHeaderView.swift in Sources */,
+				046676E7289E68D200A19620 /* ConditionCollectionViewCell.swift in Sources */,
 				044240A4289D0A8800E332D9 /* SideMenuItem.swift in Sources */,
+				046676EC289E68E800A19620 /* AirConditonCollectionViewCell.swift in Sources */,
 				04424079289CF86A00E332D9 /* HourlyViewController.swift in Sources */,
 				044240CF289D279E00E332D9 /* DataManager.swift in Sources */,
+				0476EC62289E0E780098E098 /* SettingViewController.swift in Sources */,
+				046676AF289E5B5200A19620 /* LocationModel.xcdatamodeld in Sources */,
 				0442407F289CF88500E332D9 /* ByDayViewController.swift in Sources */,
+				046676A5289E4CF500A19620 /* SearchLocation.swift in Sources */,
+				046676AB289E4D4600A19620 /* AdministrativeArea.swift in Sources */,
 				0441433E289CDB3200F7179A /* APICaller.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -595,6 +731,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		046676AD289E5B5200A19620 /* LocationModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				046676AE289E5B5200A19620 /* LocationModel.xcdatamodel */,
+			);
+			currentVersion = 046676AE289E5B5200A19620 /* LocationModel.xcdatamodel */;
+			path = LocationModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 04414310289CDA6F00F7179A /* Project object */;
 }
