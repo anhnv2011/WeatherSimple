@@ -84,6 +84,54 @@ struct APICaller {
         }
         
     }
+    func getnex12htWeatherMetric(locationId: String, completion: @escaping (([CurrentLocation]) -> Void)){
+        guard let url = URL(string: "\(Constants.baseURL)forecasts/v1/hourly/12hour/\(locationId)?apikey=90LKUI4g3wxlc1GAd1Vh1tqFVc1KZvvG&details=true&metric=true") else {
+            print(APIError.errorURL)
+            return
+        }
+//        print(url)
+//        let param:Parameters = [
+//            "apikey" : "\(Constants.API_KEY)",
+//            "details" : "true",
+//            "metric" : "true"
+//        ]
+        Alamofire.request(url).responseJSON(completionHandler: { (response) in
+        
+        
+//        }
+//        Alamofire.request(url, method: .get, parameters: param, encoding: URLEncoding.default, headers: nil).responseJSON {(response) in
+            guard let value = response.result.value else {
+                print(APIError.error("Something wrong"))
+                return
+            }
+            
+            let dataJson = JSON(value).arrayValue
+            let dataResult = dataJson.map({CurrentLocation($0)})
+            completion(dataResult)
+        })
+        
+    }
+//    func getnex12htWeatherMetric2(locationId: String) -> [CurrentLocation]{
+//        guard let url = URL(string: "\(Constants.baseURL)forecasts/v1/hourly/12hour/\(locationId)?apikey=90LKUI4g3wxlc1GAd1Vh1tqFVc1KZvvG&details=true&metric=true") else {
+//            print(APIError.errorURL)
+//            return [CurrentLocation]()
+//        }
+//        print(url)
+//        var data = [CurrentLocation]()
+//        Alamofire.request(url).responseJSON(completionHandler: { (response) in
+//        
+//            guard let value = response.result.value else {
+//                print(APIError.error("Something wrong"))
+//                return
+//            }
+//            
+//            let dataJson = JSON(value).arrayValue
+//            let dataResult = dataJson.map({CurrentLocation($0)})
+//            data = dataResult
+//        })
+//        return data
+//        
+//    }
     func getLocationByGeoposition(lat: String, lon: String, completion: @escaping ((String)-> Void)){
         guard let url = URL(string: "\(Constants.baseURL)locations/v1/cities/geoposition/search?") else {
             print(APIError.errorURL)

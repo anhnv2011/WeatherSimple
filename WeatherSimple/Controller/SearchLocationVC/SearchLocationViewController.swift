@@ -30,7 +30,7 @@ class SearchLocationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configTextfield()
-        //fetchDataTableView()
+        fetchDataTableView()
         configTableView()
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -107,31 +107,35 @@ extension SearchLocationViewController:ResultLoctionSearchViewControllerDelegate
 
 extension SearchLocationViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        arrWeather.count
+        arrLocation.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = favoriteTableView.dequeueReusableCell(withIdentifier: FavoriteTableViewCell.identifier, for: indexPath) as! FavoriteTableViewCell
-        let location = arrLocation[indexPath.row]
-        var type = ""
-        var temperate = ""
-        let value = DataManager.shared.getCurrentMeasureType()
         
-        if value == MeasureType.metric.rawValue {
+        if arrWeather.count > 0 {
+            let location = arrLocation[indexPath.row]
+            var type = ""
+            var temperate = ""
+            let value = DataManager.shared.getCurrentMeasureType()
             
-            type = "°C"
-            temperate = String((arrWeather[indexPath.row].Temperature?.Metric?.Value)!)
-        } else if value == MeasureType.england.rawValue {
-            temperate = String((arrWeather[indexPath.row].Temperature?.Imperial?.Value)!)
-            type = "°F"
-        } else {
-            temperate = String((arrWeather[indexPath.row].Temperature?.Metric?.Value)!)
-            type = "°C"
-            
+            if value == MeasureType.metric.rawValue {
+                
+                type = "°C"
+                temperate = String((arrWeather[indexPath.row].Temperature?.Metric?.Value)!)
+            } else if value == MeasureType.england.rawValue {
+                temperate = String((arrWeather[indexPath.row].Temperature?.Imperial?.Value)!)
+                type = "°F"
+            } else {
+                temperate = String((arrWeather[indexPath.row].Temperature?.Metric?.Value)!)
+                type = "°C"
+                
+            }
+                    let image = String(arrWeather[indexPath.row].WeatherIcon!)
+            print("sdadasdasdasdasdasd \(image)")
+            cell.configFavoriteTableViewCell(location: location.localizedName!, country: location.countryLocalizedName!, image: image, temperature: temperate, type: type)
         }
-                let image = String(arrWeather[indexPath.row].WeatherIcon!)
-        print("sdadasdasdasdasdasd \(image)")
-        cell.configFavoriteTableViewCell(location: location.localizedName!, country: location.countryLocalizedName!, image: image, temperature: temperate, type: type)
+       
         return cell
     }
     

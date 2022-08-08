@@ -27,7 +27,7 @@ class MainTabBarViewController: UITabBarController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "line.horizontal.3"), style: .done, target: self, action: #selector(tapMenu))
         
         titleViewButton.setTitleColor(UIColor.black, for: .normal)
-        titleViewButton.setTitle("Tap Me", for: .normal)
+        titleViewButton.setTitle("Current Location", for: .normal)
 //        titleViewButton.frame.width = 200
         // Create action listener
         titleViewButton.addTarget(self, action: #selector(MainTabBarViewController.titleViewButtonDidTap), for: .touchUpInside)

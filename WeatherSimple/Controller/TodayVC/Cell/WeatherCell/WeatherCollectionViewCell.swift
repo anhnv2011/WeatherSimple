@@ -11,6 +11,7 @@ protocol WeatherCollectionViewCellDelegate: AnyObject {
 }
 class WeatherCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var typeLable: UILabel!
     @IBOutlet weak var weatherView: UIView!
     @IBOutlet weak var containView: UIView!
     @IBOutlet weak var dayTimeLabel: UILabel!
@@ -34,7 +35,9 @@ class WeatherCollectionViewCell: UICollectionViewCell {
         weatherView.layer.cornerRadius = weatherView.frame.size.width/2
     }
 
-    func configWeatherCell(daytimelabel: String, image: String, tempe: String, realfeel: String, dayicon: String, daytem: String, dayreal: String, nighticon: String, nighttem: String, nightReal: String, nextdayicon: String, nextdautem: String, nextdayfeel: String){
+    func configWeatherCell(type: String, daytimelabel: String, image: String, tempe: String, realfeel: String, dayicon: String, daytem: String, dayreal: String, nighticon: String, nighttem: String, nightReal: String, nextdayicon: String, nextdautem: String, nextdayfeel: String){
+        
+        typeLable.text = type
         dayTimeLabel.text = daytimelabel
         imageView.image = UIImage(named: image)
         temperatureLabel.text = tempe
@@ -45,9 +48,9 @@ class WeatherCollectionViewCell: UICollectionViewCell {
         nightIcon.image = UIImage(named: nighticon)
         nightTemperatureLabel.text = nighttem
         
-//        nextDayIcon.image = UIImage(named: nextdayicon)
-//        nextDayTempe.text = nextdautem
-//        nextdayRealFeel.text = nextdayfeel
+        nextDayIcon.image = UIImage(named: nextdayicon)
+        nextDayTempe.text = nextdautem
+        nextdayRealFeel.text = nextdayfeel
     }
     @IBAction func actionNext(_ sender: Any) {
         delegate?.tapNext()

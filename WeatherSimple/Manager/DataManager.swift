@@ -9,12 +9,13 @@ import Foundation
 import CoreData
 import UIKit
 import SwiftyJSON
-struct DataManager {
+class DataManager {
     static let shared = DataManager()
     
     //MARK:- Api current save
     var currentLocationData = [CurrentLocation]()
-    var daynightData = [DayNight]()
+    var daynightData:DayNight?
+    var next12hData = [CurrentLocation]()
     
     //MARK:- User defaultValue
     //Key
