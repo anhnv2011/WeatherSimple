@@ -27,6 +27,11 @@ class ResultLoctionSearchViewController: UIViewController {
         configTextField()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        searchTextField.becomeFirstResponder()
+    }
+    
     func configTableView(){
         tableView.delegate = self
         tableView.dataSource = self
@@ -35,6 +40,7 @@ class ResultLoctionSearchViewController: UIViewController {
     }
     func configTextField(){
         searchTextField.delegate = self
+        
     }
     
 }
@@ -58,23 +64,19 @@ extension ResultLoctionSearchViewController: UITableViewDelegate, UITableViewDat
         
         tableView.deselectRow(at: indexPath, animated: true)
         
-        print(searchLocation[indexPath.row])
+        let value = searchLocation[indexPath.row]
         
-        //MARK:- Save to Core data
-        let newLocation = Location(context: context)
-        newLocation.key = searchLocation[indexPath.row].Key
-        newLocation.localizedName = searchLocation[indexPath.row].LocalizedName
-        newLocation.countryID = searchLocation[indexPath.row].Country?.ID
-        newLocation.countryLocalizedName = searchLocation[indexPath.row].Country?.LocalizedName
-        newLocation.adminID = searchLocation[indexPath.row].AdministrativeArea?.ID
-        newLocation.adminLocalizedName = searchLocation[indexPath.row].AdministrativeArea?.LocalizedName
-        do {
-            try context.save()
-            print( "codata")
-        } catch let error {
-            print(error.localizedDescription)
-            
+        guard let key = value.Key,
+              let localizedName = value.LocalizedName,
+              let countryID = value.Country?.ID,
+              let countryLocalizedName = value.Country?.LocalizedName,
+              let adminID = value.AdministrativeArea?.ID,
+              let adminLocalizedName = value.AdministrativeArea?.LocalizedName else {
+            return
         }
+        
+        DataManager.shared.creatNewLocationCoreData(key: key, localizedName: localizedName, countryID: countryID, countryLocalizedName: countryLocalizedName, adminID: adminID, adminLocalizedName: adminLocalizedName)
+        
         delegate?.tapLocation(searchLocation: searchLocation[indexPath.row])
     
         dismiss(animated: true, completion: nil)

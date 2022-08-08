@@ -11,6 +11,8 @@ import SafariServices
 class MainTabBarViewController: UITabBarController {
     
     var menu:SideMenuNavigationController?
+    // Create title button
+    let titleViewButton = UIButton(type: .system)
     override func viewDidLoad() {
         super.viewDidLoad()
         configTabBarVC()
@@ -19,28 +21,28 @@ class MainTabBarViewController: UITabBarController {
         
     }
     
-   
-   
+    
+    
     func configNavigation(){
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "line.horizontal.3"), style: .done, target: self, action: #selector(tapMenu))
-        // Create title button
-           let titleViewButton = UIButton(type: .system)
-           titleViewButton.setTitleColor(UIColor.black, for: .normal)
-           titleViewButton.setTitle("Tap Me", for: .normal)
-
-           // Create action listener
-           titleViewButton.addTarget(self, action: #selector(MainTabBarViewController.titleViewButtonDidTap), for: .touchUpInside)
-
-           // Set the title view with newly created button
-           navigationItem.titleView = titleViewButton
+        
+        titleViewButton.setTitleColor(UIColor.black, for: .normal)
+        titleViewButton.setTitle("Tap Me", for: .normal)
+//        titleViewButton.frame.width = 200
+        // Create action listener
+        titleViewButton.addTarget(self, action: #selector(MainTabBarViewController.titleViewButtonDidTap), for: .touchUpInside)
+        
+        // Set the title view with newly created button
+        navigationItem.titleView = titleViewButton
     }
     @objc func titleViewButtonDidTap(_ sender: Any) {
         let vc = SearchLocationViewController()
-        vc.modalTransitionStyle = .flipHorizontal
+        vc.delegate = self
+        vc.modalTransitionStyle = .coverVertical
         vc.modalPresentationStyle = .fullScreen
         present(vc, animated: true, completion: nil)
     }
-   
+    
     @objc func tapMenu(){
         let vc = MenuViewController()
         vc.delegate = self
@@ -88,7 +90,17 @@ extension MainTabBarViewController: MenuViewControllerDelegate{
         navigationController?.pushViewController(vc, animated: true)
     }
     
+}
+
+extension MainTabBarViewController: SearchLocationViewControllerDelegate{
+    func changeLocation(location: Location) {
+        let title = location.localizedName
+        titleViewButton.setTitle(title, for: .normal)
+    }
     
-    
+    func choseLocation(searchLocation: SearchLocation) {
+        let title = searchLocation.LocalizedName!
+        titleViewButton.setTitle(title, for: .normal)
+    }
     
 }

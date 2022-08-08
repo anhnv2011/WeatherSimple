@@ -1,22 +1,309 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13142" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12042"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingViewController" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingViewController" customModule="WeatherSimple" customModuleProvider="target">
             <connections>
+                <outlet property="compoudMeasureButton" destination="tl2-dP-WYM" id="xe7-fB-BCp"/>
+                <outlet property="containView" destination="rvj-QK-A2U" id="NNr-ls-R1f"/>
+                <outlet property="customShowButton" destination="m3p-66-H53" id="Iaq-gb-2ac"/>
+                <outlet property="darkShowButton" destination="KSk-Ap-FYE" id="mV6-Yh-zwI"/>
+                <outlet property="englandMesureButton" destination="Tgj-QL-ez9" id="xvx-ZR-l2t"/>
+                <outlet property="lightShowButton" destination="qT5-ga-jIf" id="6pw-Li-P07"/>
+                <outlet property="metricMeasureButton" destination="VVY-fA-Gsz" id="PBK-Ht-W29"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="windMetricButton" destination="pMj-LD-WZM" id="tTC-0g-Dlb"/>
+                <outlet property="windRadiusButton" destination="jdc-nk-bkm" id="Iip-4w-sSX"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rvj-QK-A2U" userLabel="Contain View">
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="3g1-JU-Rpw">
+                            <rect key="frame" x="0.0" y="204.5" width="414" height="409"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8C6-qd-Lb2" userLabel="Unit">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="136.5"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Đơn vị" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dNt-cA-zRh">
+                                            <rect key="frame" x="8" y="8" width="60.5" height="26.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="e8g-ur-tO3">
+                                            <rect key="frame" x="8" y="50.5" width="398" height="70"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tgj-QL-ez9">
+                                                    <rect key="frame" x="0.0" y="0.0" width="132.5" height="70"/>
+                                                    <state key="normal">
+                                                        <attributedString key="attributedTitle">
+                                                            <fragment>
+                                                                <string key="content">Hệ Anh
+</string>
+                                                                <attributes>
+                                                                    <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <font key="NSFont" metaFont="system" size="17"/>
+                                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                </attributes>
+                                                            </fragment>
+                                                            <fragment content="°F, dặm/giờ, in">
+                                                                <attributes>
+                                                                    <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <font key="NSFont" metaFont="system" size="14"/>
+                                                                    <font key="NSOriginalFont" metaFont="system" size="14"/>
+                                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                </attributes>
+                                                            </fragment>
+                                                        </attributedString>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="actionButton:" destination="-1" eventType="touchUpInside" id="3No-jx-Vw6"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VVY-fA-Gsz">
+                                                    <rect key="frame" x="132.5" y="0.0" width="133" height="70"/>
+                                                    <state key="normal">
+                                                        <attributedString key="attributedTitle">
+                                                            <fragment>
+                                                                <string key="content">Hệ Mét
+</string>
+                                                                <attributes>
+                                                                    <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <font key="NSFont" size="17" name="HelveticaNeue"/>
+                                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                                                </attributes>
+                                                            </fragment>
+                                                            <fragment content="°C, km/giờ, mm">
+                                                                <attributes>
+                                                                    <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <font key="NSFont" size="14" name="HelveticaNeue"/>
+                                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                                                </attributes>
+                                                            </fragment>
+                                                        </attributedString>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="actionButton:" destination="-1" eventType="touchUpInside" id="EN7-dT-CIV"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tl2-dP-WYM">
+                                                    <rect key="frame" x="265.5" y="0.0" width="132.5" height="70"/>
+                                                    <state key="normal">
+                                                        <attributedString key="attributedTitle">
+                                                            <fragment>
+                                                                <string key="content">Kết hợp
+</string>
+                                                                <attributes>
+                                                                    <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <font key="NSFont" size="17" name="HelveticaNeue"/>
+                                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                                                </attributes>
+                                                            </fragment>
+                                                            <fragment content="°F, dặm/giờ, mm">
+                                                                <attributes>
+                                                                    <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <font key="NSFont" size="14" name="HelveticaNeue"/>
+                                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                                                </attributes>
+                                                            </fragment>
+                                                        </attributedString>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="actionButton:" destination="-1" eventType="touchUpInside" id="xK2-Fp-6s4"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                    <constraints>
+                                        <constraint firstItem="e8g-ur-tO3" firstAttribute="leading" secondItem="8C6-qd-Lb2" secondAttribute="leading" constant="8" id="3wy-yG-cRv"/>
+                                        <constraint firstItem="dNt-cA-zRh" firstAttribute="leading" secondItem="8C6-qd-Lb2" secondAttribute="leading" constant="8" id="Gda-B3-c8c"/>
+                                        <constraint firstAttribute="trailing" secondItem="e8g-ur-tO3" secondAttribute="trailing" constant="8" id="TW9-GF-xhj"/>
+                                        <constraint firstItem="e8g-ur-tO3" firstAttribute="top" secondItem="dNt-cA-zRh" secondAttribute="bottom" constant="16" id="VG5-tt-ipK"/>
+                                        <constraint firstItem="dNt-cA-zRh" firstAttribute="top" secondItem="8C6-qd-Lb2" secondAttribute="top" constant="8" id="bRv-4N-jza"/>
+                                        <constraint firstAttribute="bottom" secondItem="e8g-ur-tO3" secondAttribute="bottom" constant="16" id="x3N-A0-o4a"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nR4-31-mFj" userLabel="Wind">
+                                    <rect key="frame" x="0.0" y="136.5" width="414" height="136"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hướng gió" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wLh-S8-8xy">
+                                            <rect key="frame" x="8" y="8" width="98.5" height="26.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="CJ1-pE-xA4">
+                                            <rect key="frame" x="8" y="50.5" width="398" height="69.5"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pMj-LD-WZM">
+                                                    <rect key="frame" x="0.0" y="0.0" width="199" height="69.5"/>
+                                                    <state key="normal">
+                                                        <attributedString key="attributedTitle">
+                                                            <fragment>
+                                                                <string key="content">Hệ Mét
+</string>
+                                                                <attributes>
+                                                                    <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <font key="NSFont" size="17" name="HelveticaNeue"/>
+                                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                                                </attributes>
+                                                            </fragment>
+                                                            <fragment content="°C, km/giờ, mm">
+                                                                <attributes>
+                                                                    <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <font key="NSFont" size="14" name="HelveticaNeue"/>
+                                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                                                </attributes>
+                                                            </fragment>
+                                                        </attributedString>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="actionButton:" destination="-1" eventType="touchUpInside" id="UIe-Lu-ncx"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jdc-nk-bkm">
+                                                    <rect key="frame" x="199" y="0.0" width="199" height="69.5"/>
+                                                    <state key="normal">
+                                                        <attributedString key="attributedTitle">
+                                                            <fragment>
+                                                                <string key="content">Độ
+</string>
+                                                                <attributes>
+                                                                    <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <font key="NSFont" size="17" name="HelveticaNeue"/>
+                                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                                                </attributes>
+                                                            </fragment>
+                                                            <fragment content="0 - 360">
+                                                                <attributes>
+                                                                    <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <font key="NSFont" size="14" name="HelveticaNeue"/>
+                                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                                                </attributes>
+                                                            </fragment>
+                                                        </attributedString>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="actionButton:" destination="-1" eventType="touchUpInside" id="l3P-cf-IKp"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                                    <constraints>
+                                        <constraint firstItem="CJ1-pE-xA4" firstAttribute="leading" secondItem="nR4-31-mFj" secondAttribute="leading" constant="8" id="2B7-Sb-YBM"/>
+                                        <constraint firstItem="wLh-S8-8xy" firstAttribute="top" secondItem="nR4-31-mFj" secondAttribute="top" constant="8" id="9aJ-RU-NVB"/>
+                                        <constraint firstItem="CJ1-pE-xA4" firstAttribute="top" secondItem="wLh-S8-8xy" secondAttribute="bottom" constant="16" id="REa-31-u6k"/>
+                                        <constraint firstItem="wLh-S8-8xy" firstAttribute="leading" secondItem="nR4-31-mFj" secondAttribute="leading" constant="8" id="ffm-iM-c2m"/>
+                                        <constraint firstAttribute="bottom" secondItem="CJ1-pE-xA4" secondAttribute="bottom" constant="16" id="jdZ-mi-Kdv"/>
+                                        <constraint firstAttribute="trailing" secondItem="CJ1-pE-xA4" secondAttribute="trailing" constant="8" id="qOk-V2-a5V"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J1V-Y1-dxx" userLabel="Show">
+                                    <rect key="frame" x="0.0" y="272.5" width="414" height="136.5"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chế độ hiển thị" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GUt-xT-Lvv">
+                                            <rect key="frame" x="8" y="8" width="143.5" height="26.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="6Xf-jT-JL9">
+                                            <rect key="frame" x="8" y="50.5" width="398" height="70"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qT5-ga-jIf">
+                                                    <rect key="frame" x="0.0" y="0.0" width="132.5" height="70"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                                    <state key="normal" title="Sáng">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="actionButton:" destination="-1" eventType="touchUpInside" id="MIK-xQ-JkZ"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KSk-Ap-FYE">
+                                                    <rect key="frame" x="132.5" y="0.0" width="133" height="70"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                                    <state key="normal" title="Tối">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="actionButton:" destination="-1" eventType="touchUpInside" id="Ijn-QQ-Dck"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m3p-66-H53">
+                                                    <rect key="frame" x="265.5" y="0.0" width="132.5" height="70"/>
+                                                    <state key="normal" title="Custom">
+                                                        <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="actionButton:" destination="-1" eventType="touchUpInside" id="C6G-zH-31D"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                    <constraints>
+                                        <constraint firstItem="GUt-xT-Lvv" firstAttribute="leading" secondItem="J1V-Y1-dxx" secondAttribute="leading" constant="8" id="3r3-M0-D8B"/>
+                                        <constraint firstAttribute="trailing" secondItem="6Xf-jT-JL9" secondAttribute="trailing" constant="8" id="8fT-eO-eSy"/>
+                                        <constraint firstItem="GUt-xT-Lvv" firstAttribute="top" secondItem="J1V-Y1-dxx" secondAttribute="top" constant="8" id="DT1-Tc-2pF"/>
+                                        <constraint firstItem="6Xf-jT-JL9" firstAttribute="leading" secondItem="J1V-Y1-dxx" secondAttribute="leading" constant="8" id="h3W-s8-OKF"/>
+                                        <constraint firstAttribute="bottom" secondItem="6Xf-jT-JL9" secondAttribute="bottom" constant="16" id="u5V-NC-JmM"/>
+                                        <constraint firstItem="6Xf-jT-JL9" firstAttribute="top" secondItem="GUt-xT-Lvv" secondAttribute="bottom" constant="16" id="uh6-R2-jnB"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="3g1-JU-Rpw" firstAttribute="centerY" secondItem="rvj-QK-A2U" secondAttribute="centerY" id="ME8-I3-gja"/>
+                        <constraint firstItem="3g1-JU-Rpw" firstAttribute="width" secondItem="rvj-QK-A2U" secondAttribute="width" id="UrO-Kk-8wa"/>
+                        <constraint firstAttribute="trailing" secondItem="3g1-JU-Rpw" secondAttribute="trailing" id="cjq-Zk-zf0"/>
+                        <constraint firstItem="3g1-JU-Rpw" firstAttribute="leading" secondItem="rvj-QK-A2U" secondAttribute="leading" id="mPd-Oj-O9a"/>
+                        <constraint firstItem="3g1-JU-Rpw" firstAttribute="height" secondItem="rvj-QK-A2U" secondAttribute="height" multiplier="0.5" id="qRC-xR-tm8"/>
+                    </constraints>
+                </view>
+            </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="rvj-QK-A2U" secondAttribute="trailing" id="BgD-fV-4I7"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="rvj-QK-A2U" secondAttribute="bottom" id="Cy0-39-HYm"/>
+                <constraint firstItem="rvj-QK-A2U" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Los-aM-WTp"/>
+                <constraint firstItem="rvj-QK-A2U" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="UIq-Em-f6M"/>
+            </constraints>
+            <point key="canvasLocation" x="106" y="69"/>
         </view>
     </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemIndigoColor">
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>
