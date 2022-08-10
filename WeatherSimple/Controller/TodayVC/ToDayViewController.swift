@@ -40,29 +40,27 @@ class ToDayViewController: UIViewController {
         let settingvc = SettingViewController()
         settingvc.delegate = self
         
-        //        APICaller.shared.getDayNightDataMetric(locationkey: "353412") { (result) in
-        //            print(result)
-        //        }
         
-        // NotificationCenter.default.addObserver(self, selector: #selector(fetNewData), name: .newLocation, object: nil)
-        //        NotificationCenter.default.addObserver(forName: .newLocation, object: nil, queue: OperationQueue.main) { (notification) in
-        //
-        //            print("test")
-        //            let key = DataManager.shared.newLocationkey
-        //            APICaller.shared.getDetailCurrentConditionWeather(locationId: key) { (currentResult) in
-        //                self.currentLocation = currentResult
-        //                DataManager.shared.currentLocationData = currentResult
-        //                self.collectionView.reloadData()
-        //            }
-        //            APICaller.shared.getnex12htWeatherMetric(locationId: key) { (next12result) in
-        //                self.next12hoursData = next12result
-        //                DataManager.shared.next12hData = next12result
-        //                self.collectionView.reloadData()
-        //            }
         
-        //        }
+         NotificationCenter.default.addObserver(self, selector: #selector(fetNewData), name: .newLocation, object: nil)
+                NotificationCenter.default.addObserver(forName: .newLocation, object: nil, queue: OperationQueue.main) { (notification) in
         
-        NotificationCenter.default.addObserver(self, selector: #selector(fetNewData(notification:)), name: .newLocation, object: nil)
+                    print("test")
+                    let key = DataManager.shared.newLocationkey
+                    APICaller.shared.getDetailCurrentConditionWeather(locationId: key) { (currentResult) in
+                        self.currentLocation = currentResult
+                        DataManager.shared.currentLocationData = currentResult
+                        self.collectionView.reloadData()
+                    }
+                    APICaller.shared.getnex12htWeatherMetric(locationId: key) { (next12result) in
+                        self.next12hoursData = next12result
+                        DataManager.shared.next12hData = next12result
+                        self.collectionView.reloadData()
+                    }
+        
+                }
+        
+//        NotificationCenter.default.addObserver(self, selector: #selector(fetNewData(notification:)), name: .newLocation, object: nil)
         
     }
     
@@ -70,7 +68,7 @@ class ToDayViewController: UIViewController {
     @objc func fetNewData(notification: Notification){
         //        print("sadasdadasdasdasdadasdsad")
         //        print(searchVc?.passdatatest )
-        print((notification.userInfo?["location"])! as! String)
+//        print((notification.userInfo?["location"])! as! String)
         
     }
     
@@ -112,7 +110,7 @@ extension ToDayViewController: CLLocationManagerDelegate{
                 //                                    DataManager.shared.daynightData = daynight
                 //                                    self.collectionView.reloadData()
                 //                                }
-                
+
                 APICaller.shared.getDetailCurrentConditionWeather(locationId: result) { (currentResult) in
                     self.currentLocation = currentResult
                     DataManager.shared.currentLocationData = currentResult
@@ -124,7 +122,7 @@ extension ToDayViewController: CLLocationManagerDelegate{
 //                    print(self.next12hoursData)
                     self.collectionView.reloadData()
                 }
-                
+
             }
         }
     }

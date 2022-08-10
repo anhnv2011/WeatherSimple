@@ -47,7 +47,7 @@ class HourlyViewController: UIViewController {
     
     func setupCard() {
         visualEffectView = UIVisualEffectView()
-        visualEffectView.frame = CGRect(x: 0, y: 0, width: view.bounds.height, height: view.bounds.height)
+        visualEffectView.frame = CGRect(x: 0, y: 0, width: view.bounds.height, height: view.bounds.height - 50)
         self.view.addSubview(visualEffectView)
         
         cardViewController = CardViewForHourViewController()

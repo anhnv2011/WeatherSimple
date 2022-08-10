@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import Charts
 
 enum CardState {
     case expanded
@@ -19,7 +19,7 @@ class ByDayViewController: UIViewController {
     var cardViewController:CardViewViewController!
     var visualEffectView:UIVisualEffectView!
     
-    let cardHeight:CGFloat = 600
+    let cardHeight:CGFloat = 450
     let cardHandleAreaHeight:CGFloat = 64
     var cardVisible = false
     var nextState:CardState {
@@ -29,9 +29,72 @@ class ByDayViewController: UIViewController {
     var runningAnimations = [UIViewPropertyAnimator]()
     var animationProgressWhenInterrupted:CGFloat = 0
     var safe:CGFloat = 0
+    
+    var bydayData:Next5day?
+    var barchart:BarChartView!
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCard()
+        barchart = BarChartView(frame: CGRect(x: 0, y: 100, width: view.frame.width, height: view.frame.width-70))
+        view.addSubview(barchart!)
+        fetchData(locationId: DataManager.shared.newLocationkey)
+    }
+    
+    func fetchData(locationId: String){
+        APICaller.shared.getNext5DayWeather(locationid: locationId) { (result) in
+            DataManager.shared.next5dData = result
+            self.bydayData = result
+            self.drawBar(next5daydata: result)
+            self.cardViewController.next5dayData = result
+            self.cardViewController.changeToDay()
+        }
+    }
+    
+    func drawBar(next5daydata: Next5day){
+       
+        var entry = [BarChartDataEntry]()
+        for x in 0..<(bydayData?.DailyForecasts!.count)! {
+            let data = bydayData?.DailyForecasts
+            let value = data![x].Temperature?.Maximum?.Value
+            entry.append(BarChartDataEntry(x: Double(x), y: Double(value ?? 0)))
+        }
+        var entry2 = [BarChartDataEntry]()
+        for x in 0..<(bydayData?.DailyForecasts!.count)!{
+            let data = bydayData?.DailyForecasts
+            let value = data![x].Temperature?.Minimum?.Value
+            entry2.append(BarChartDataEntry(x: Double(x), y: Double(value!)))
+        }
+        
+        let set = BarChartDataSet(entries: entry, label: "Maximum ")
+        set.colors = [UIColor.red]
+        let set2 = BarChartDataSet(entries: entry2, label: "Minimum")
+        set2.colors = [UIColor.blue]
+        
+        let data = BarChartData(dataSets: [set, set2])
+        
+
+        let groupSpace = 0.54
+        let barSpace = 0.03
+        let barWidth = 0.2
+        data.barWidth = barWidth
+        
+        barchart.xAxis.axisMinimum = Double(0)
+        barchart.xAxis.axisMaximum = Double(0) + data.groupWidth(groupSpace: groupSpace, barSpace: barSpace) * 5
+        data.groupBars(fromX: Double(0), groupSpace: groupSpace, barSpace: barSpace)
+        
+        barchart.data = data
+        
+        let x_Axis = barchart.xAxis
+        x_Axis.centerAxisLabelsEnabled = true
+        x_Axis.granularity = 1
+        barchart.xAxis.labelPosition = .top
+        
+        let columnTitles = ["Next 1", "Next 2", "Next 3", "Next 4", "Next 5"]
+        let formatter = IndexAxisValueFormatter(values: columnTitles)
+        barchart.xAxis.valueFormatter = formatter
+        
+        barchart.animate(yAxisDuration: 0.8, easingOption: .easeInCubic)
+        
     }
     
     func setupCard() {

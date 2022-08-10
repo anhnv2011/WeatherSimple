@@ -54,13 +54,13 @@ class SearchLocationViewController: UIViewController {
             print(error.localizedDescription)
         }
         
-//        for num in self.arrLocation{
-//            APICaller.shared.getDetailCurrentConditionWeather(locationId: num.key!) { (result) in
-//                self.arrWeather.append(contentsOf: result)
-//                print("1\(self.arrWeather)")
-//                self.favoriteTableView.reloadData()
-//            }
-//        }
+        for num in self.arrLocation{
+            APICaller.shared.getDetailCurrentConditionWeather(locationId: num.key!) { (result) in
+                self.arrWeather.append(contentsOf: result)
+                print("1\(self.arrWeather)")
+                self.favoriteTableView.reloadData()
+            }
+        }
         
         
         print("2\(self.arrWeather)")
@@ -146,7 +146,7 @@ extension SearchLocationViewController: UITableViewDelegate, UITableViewDataSour
        
         let key = arrLocation[indexPath.row].key
         DataManager.shared.newLocationkey = key!
-        NotificationCenter.default.post(name: Notification.Name.newLocation,object: self, userInfo: ["location" : "testAny"])
+        NotificationCenter.default.post(name: Notification.Name.newLocation,object: self)
         
         
         

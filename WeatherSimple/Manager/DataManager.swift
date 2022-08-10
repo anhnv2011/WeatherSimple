@@ -23,6 +23,7 @@ class DataManager {
     var currentLocationData = [CurrentLocation]()
     var daynightData:DayNight?
     var next12hData = [Next12]()
+    var next5dData:Next5day?
     
     //MARK:- User defaultValue
     //Key

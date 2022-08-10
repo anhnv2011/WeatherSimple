@@ -113,6 +113,47 @@ struct APICaller {
         })
         
     }
+    
+    func getnex12htWeatherFahren(locationId: String, completion: @escaping (([Next12]) -> Void)){
+        guard let url = URL(string: "\(Constants.baseURL)forecasts/v1/hourly/12hour/\(locationId)?apikey=90LKUI4g3wxlc1GAd1Vh1tqFVc1KZvvG&details=true&metric=false") else {
+            print(APIError.errorURL)
+            return
+        }
+
+        Alamofire.request(url).responseJSON(completionHandler: { (response) in
+
+            guard let value = response.result.value else {
+                print(APIError.error("Something wrong"))
+                return
+            }
+            
+            let dataJson = JSON(value).arrayValue
+            let dataResult = dataJson.map({Next12($0)})
+            completion(dataResult)
+        })
+        
+    }
+    
+    func getNext5DayWeather(locationid: String, completion: @escaping ((Next5day) -> Void)){
+        guard let url = URL(string: "\(Constants.baseURL)forecasts/v1/daily/5day/\(locationid)?apikey=\(Constants.API_KEY)&details=false&metric=true" ) else {
+            print(APIError.errorURL)
+            return
+        }
+        print(url)
+        Alamofire.request(url).responseJSON(completionHandler: { (response) in
+
+            guard let value = response.result.value else {
+                print(APIError.error("Something wrong"))
+                return
+            }
+            
+            let dataJson = JSON(value)
+            let dataResult = Next5day(dataJson)
+            
+            completion(dataResult)
+        })
+       
+    }
 
     func getLocationByGeoposition(lat: String, lon: String, completion: @escaping ((String)-> Void)){
         guard let url = URL(string: "\(Constants.baseURL)locations/v1/cities/geoposition/search?") else {

@@ -47,6 +47,7 @@
 		0430C02E289FB0E400983786 /* MeasureType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0430C02D289FB0E400983786 /* MeasureType.swift */; };
 		0430C031289FB3F700983786 /* WindType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0430C030289FB3F700983786 /* WindType.swift */; };
 		0430C034289FB41000983786 /* ShowType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0430C033289FB41000983786 /* ShowType.swift */; };
+		043878CD28A3FA4800F0AA56 /* Next5day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043878CC28A3FA4800F0AA56 /* Next5day.swift */; };
 		043E90E128A36D9D00662AB6 /* CardViewForHourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E90DF28A36D9D00662AB6 /* CardViewForHourViewController.swift */; };
 		043E90E228A36D9D00662AB6 /* CardViewForHourViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 043E90E028A36D9D00662AB6 /* CardViewForHourViewController.xib */; };
 		043E90F328A3981C00662AB6 /* HourTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043E90F128A3981C00662AB6 /* HourTableViewCell.swift */; };
@@ -73,6 +74,9 @@
 		044240D6289D2BA400E332D9 /* MenuHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044240D5289D2BA400E332D9 /* MenuHeaderView.swift */; };
 		044240D9289D2C2100E332D9 /* MenuFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044240D8289D2C2100E332D9 /* MenuFooterView.swift */; };
 		044240DC289D379200E332D9 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044240DB289D379200E332D9 /* CircleView.swift */; };
+		04458BF528A3B4BC0030EA85 /* tViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04458BF328A3B4BC0030EA85 /* tViewController.swift */; };
+		04458BF628A3B4BC0030EA85 /* tViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04458BF428A3B4BC0030EA85 /* tViewController.xib */; };
+		04458BF928A3B59D0030EA85 /* DemoBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04458BF828A3B59D0030EA85 /* DemoBaseViewController.swift */; };
 		04494C8E289D611800672604 /* SearchLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04494C8C289D611800672604 /* SearchLocationViewController.swift */; };
 		04494C8F289D611800672604 /* SearchLocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04494C8D289D611800672604 /* SearchLocationViewController.xib */; };
 		04494C95289D718500672604 /* ResultLoctionSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04494C93289D718500672604 /* ResultLoctionSearchViewController.swift */; };
@@ -179,6 +183,7 @@
 		0430C02D289FB0E400983786 /* MeasureType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasureType.swift; sourceTree = "<group>"; };
 		0430C030289FB3F700983786 /* WindType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindType.swift; sourceTree = "<group>"; };
 		0430C033289FB41000983786 /* ShowType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowType.swift; sourceTree = "<group>"; };
+		043878CC28A3FA4800F0AA56 /* Next5day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Next5day.swift; sourceTree = "<group>"; };
 		043E90DF28A36D9D00662AB6 /* CardViewForHourViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewForHourViewController.swift; sourceTree = "<group>"; };
 		043E90E028A36D9D00662AB6 /* CardViewForHourViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardViewForHourViewController.xib; sourceTree = "<group>"; };
 		043E90F128A3981C00662AB6 /* HourTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourTableViewCell.swift; sourceTree = "<group>"; };
@@ -207,6 +212,9 @@
 		044240D5289D2BA400E332D9 /* MenuHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuHeaderView.swift; sourceTree = "<group>"; };
 		044240D8289D2C2100E332D9 /* MenuFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuFooterView.swift; sourceTree = "<group>"; };
 		044240DB289D379200E332D9 /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
+		04458BF328A3B4BC0030EA85 /* tViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tViewController.swift; sourceTree = "<group>"; };
+		04458BF428A3B4BC0030EA85 /* tViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = tViewController.xib; sourceTree = "<group>"; };
+		04458BF828A3B59D0030EA85 /* DemoBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoBaseViewController.swift; sourceTree = "<group>"; };
 		04494C8C289D611800672604 /* SearchLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationViewController.swift; sourceTree = "<group>"; };
 		04494C8D289D611800672604 /* SearchLocationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchLocationViewController.xib; sourceTree = "<group>"; };
 		04494C93289D718500672604 /* ResultLoctionSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultLoctionSearchViewController.swift; sourceTree = "<group>"; };
@@ -353,6 +361,14 @@
 			children = (
 			);
 			path = Coredata;
+			sourceTree = "<group>";
+		};
+		043878CB28A3FA1C00F0AA56 /* Next5Day */ = {
+			isa = PBXGroup;
+			children = (
+				043878CC28A3FA4800F0AA56 /* Next5day.swift */,
+			);
+			path = Next5Day;
 			sourceTree = "<group>";
 		};
 		043E90DE28A36D6100662AB6 /* CardViewForHour */ = {
@@ -505,6 +521,16 @@
 			path = MenuVc;
 			sourceTree = "<group>";
 		};
+		04458BED28A3B2F00030EA85 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				04458BF828A3B59D0030EA85 /* DemoBaseViewController.swift */,
+				04458BF328A3B4BC0030EA85 /* tViewController.swift */,
+				04458BF428A3B4BC0030EA85 /* tViewController.xib */,
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		04494C8B289D60D000672604 /* SearchLocationVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -549,6 +575,7 @@
 		04560E7F289EA5BD005015E0 /* Test */ = {
 			isa = PBXGroup;
 			children = (
+				04458BED28A3B2F00030EA85 /* New Group */,
 				046676F6289E9F5000A19620 /* TestCoredataViewController.swift */,
 				046676F7289E9F5000A19620 /* TestCoredataViewController.xib */,
 			);
@@ -558,6 +585,7 @@
 		046676A3289E4CD700A19620 /* Object */ = {
 			isa = PBXGroup;
 			children = (
+				043878CB28A3FA1C00F0AA56 /* Next5Day */,
 				04A5BBC728A17E2A003D95CF /* next12 */,
 				046B25E128A12CDB00587267 /* DayNight */,
 				0430BFE2289F8AE000983786 /* CurrentLocation */,
@@ -776,6 +804,7 @@
 				0442407A289CF86A00E332D9 /* HourlyViewController.xib in Resources */,
 				046676F3289E73AD00A19620 /* CardViewViewController.xib in Resources */,
 				046B6DBB28A0B70200D30EAA /* MoreConditionDeatailViewController.xib in Resources */,
+				04458BF628A3B4BC0030EA85 /* tViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -855,6 +884,7 @@
 				0430C022289F8B0300983786 /* Temperature.swift in Sources */,
 				046676F8289E9F5000A19620 /* TestCoredataViewController.swift in Sources */,
 				04A5BBE528A17EE6003D95CF /* Evapotranspiration2.swift in Sources */,
+				043878CD28A3FA4800F0AA56 /* Next5day.swift in Sources */,
 				0430C01F289F8B0300983786 /* Metric.swift in Sources */,
 				04414337289CDB0000F7179A /* ToDayViewController.swift in Sources */,
 				046B25E628A12D3200587267 /* Headline.swift in Sources */,
@@ -884,9 +914,11 @@
 				0430C034289FB41000983786 /* ShowType.swift in Sources */,
 				0430C01A289F8B0300983786 /* Past3Hours.swift in Sources */,
 				0430C01D289F8B0300983786 /* Past24HourRange.swift in Sources */,
+				04458BF528A3B4BC0030EA85 /* tViewController.swift in Sources */,
 				04A5BBEA28A17EE6003D95CF /* RealFeelTemperatureShade2.swift in Sources */,
 				046B25F528A12E6800587267 /* Heating.swift in Sources */,
 				04A5BBE228A17EE6003D95CF /* Speed2.swift in Sources */,
+				04458BF928A3B59D0030EA85 /* DemoBaseViewController.swift in Sources */,
 				043E90F328A3981C00662AB6 /* HourTableViewCell.swift in Sources */,
 				046B260728A12F8B00587267 /* Ice.swift in Sources */,
 				04494C8E289D611800672604 /* SearchLocationViewController.swift in Sources */,
