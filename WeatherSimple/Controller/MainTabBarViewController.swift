@@ -38,9 +38,16 @@ class MainTabBarViewController: UITabBarController {
     @objc func titleViewButtonDidTap(_ sender: Any) {
         let vc = SearchLocationViewController()
         vc.delegate = self
-        vc.modalTransitionStyle = .coverVertical
+//        vc.modalTransitionStyle = .coverVertical
+//        vc.modalPresentationStyle = .fullScreen
+//        present(vc, animated: true, completion: nil)
+        let transition = CATransition()
+        transition.duration = 0.3
+        transition.type = CATransitionType.push
+        transition.subtype = CATransitionSubtype.fromBottom
+        view.window!.layer.add(transition, forKey: kCATransition)
         vc.modalPresentationStyle = .fullScreen
-        present(vc, animated: true, completion: nil)
+        self.present(vc, animated: false, completion: nil)
     }
     
     @objc func tapMenu(){
@@ -93,6 +100,10 @@ extension MainTabBarViewController: MenuViewControllerDelegate{
 }
 
 extension MainTabBarViewController: SearchLocationViewControllerDelegate{
+    func sendata(id: String) {
+        
+    }
+    
     func changeLocation(location: Location) {
         let title = location.localizedName
         titleViewButton.setTitle(title, for: .normal)

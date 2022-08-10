@@ -1,14 +1,20 @@
 PODS:
   - Alamofire (4.9.1)
+  - Charts (4.0.3):
+    - Charts/Core (= 4.0.3)
+  - Charts/Core (4.0.3):
+    - SwiftAlgorithms (~> 1.0)
   - EzPopup (1.2.4)
   - SDWebImage (5.12.5):
     - SDWebImage/Core (= 5.12.5)
   - SDWebImage/Core (5.12.5)
   - SideMenu (6.5.0)
+  - SwiftAlgorithms (1.0.0)
   - SwiftyJSON (5.0.1)
 
 DEPENDENCIES:
   - Alamofire (~> 4.9.1)
+  - Charts
   - EzPopup
   - SDWebImage
   - SideMenu
@@ -17,18 +23,22 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - Charts
     - EzPopup
     - SDWebImage
     - SideMenu
+    - SwiftAlgorithms
     - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  Charts: d959d6723c8eedfdd0735dfc28cb0a71762ac4d9
   EzPopup: 37f2c40e8ce50412a269bfba365baa7085c28002
   SDWebImage: 0905f1b7760fc8ac4198cae0036600d67478751e
   SideMenu: f583187d21c5b1dd04c72002be544b555a2627a2
+  SwiftAlgorithms: 38dda4731d19027fdeee1125f973111bf3386b53
   SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
 
-PODFILE CHECKSUM: 88dea38f0f5014e0d9519da041b54a6b641a6b75
+PODFILE CHECKSUM: 77fa8f470dcf23d80ecb51c1174c8458a9b01e83
 
 COCOAPODS: 1.11.3

@@ -19,7 +19,8 @@ class SearchLocationViewController: UIViewController {
     @IBOutlet weak var searchTextfield: UITextField!
     @IBOutlet weak var favoriteTableView: UITableView!
     
-    
+     
+    var passdatatest = "test"
     //đối tương dung để truy vấn vào bộ nhớ
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var delegate: SearchLocationViewControllerDelegate?
@@ -53,13 +54,13 @@ class SearchLocationViewController: UIViewController {
             print(error.localizedDescription)
         }
         
-        for num in self.arrLocation{
-            APICaller.shared.getDetailCurrentConditionWeather(locationId: num.key!) { (result) in
-                self.arrWeather.append(contentsOf: result)
-                print("1\(self.arrWeather)")
-                self.favoriteTableView.reloadData()
-            }
-        }
+//        for num in self.arrLocation{
+//            APICaller.shared.getDetailCurrentConditionWeather(locationId: num.key!) { (result) in
+//                self.arrWeather.append(contentsOf: result)
+//                print("1\(self.arrWeather)")
+//                self.favoriteTableView.reloadData()
+//            }
+//        }
         
         
         print("2\(self.arrWeather)")
@@ -142,6 +143,13 @@ extension SearchLocationViewController: UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         favoriteTableView.deselectRow(at: indexPath, animated: true)
         delegate?.changeLocation(location: arrLocation[indexPath.row])
+       
+        let key = arrLocation[indexPath.row].key
+        DataManager.shared.newLocationkey = key!
+        NotificationCenter.default.post(name: Notification.Name.newLocation,object: self, userInfo: ["location" : "testAny"])
+        
+        
+        
         dismiss(animated: true, completion: nil)
     }
     

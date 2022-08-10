@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TestCoredataViewController" customModule="WeatherSimple" customModuleProvider="target">
             <connections>
                 <outlet property="tableView" destination="vrO-yQ-PV3" id="9dX-2G-0rd"/>
+                <outlet property="topview" destination="1GO-KJ-7kP" id="ngT-ZX-ESM"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -20,19 +21,27 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vrO-yQ-PV3">
-                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <rect key="frame" x="0.0" y="594" width="414" height="268"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1GO-KJ-7kP">
+                    <rect key="frame" x="0.0" y="44" width="414" height="448"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="vrO-yQ-PV3" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="HSH-Ws-RJm"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="vrO-yQ-PV3" secondAttribute="bottom" id="QJY-Ul-ha1"/>
-                <constraint firstItem="vrO-yQ-PV3" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="hI7-xt-zqI"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="vrO-yQ-PV3" secondAttribute="trailing" id="mcR-rQ-9hC"/>
+                <constraint firstItem="vrO-yQ-PV3" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="550" id="5AQ-86-M6l"/>
+                <constraint firstItem="1GO-KJ-7kP" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="8ex-jM-CDr"/>
+                <constraint firstItem="vrO-yQ-PV3" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Cio-5O-Ldq"/>
+                <constraint firstItem="1GO-KJ-7kP" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.5" id="UlH-14-Kay"/>
+                <constraint firstItem="vrO-yQ-PV3" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="guQ-ST-dbG"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="1GO-KJ-7kP" secondAttribute="trailing" id="he4-Qu-ERX"/>
+                <constraint firstItem="vrO-yQ-PV3" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="sQL-J7-KcK"/>
+                <constraint firstItem="1GO-KJ-7kP" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="so9-FH-smT"/>
             </constraints>
-            <point key="canvasLocation" x="106" y="65"/>
+            <point key="canvasLocation" x="105.79710144927537" y="64.955357142857139"/>
         </view>
     </objects>
     <resources>

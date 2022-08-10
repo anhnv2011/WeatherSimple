@@ -7,185 +7,336 @@
 
 import UIKit
 
+
+enum CardState {
+    case expanded
+    case collapsed
+}
 class ByDayViewController: UIViewController {
-    // Enum for card states
-    enum CardState {
-        case collapsed
-        case expanded
-    }
-    // Variable determines the next state of the card expressing that the card starts and collapased
+   
+    @IBOutlet weak var ContainView: UIView!
+    
+    var cardViewController:CardViewViewController!
+    var visualEffectView:UIVisualEffectView!
+    
+    let cardHeight:CGFloat = 600
+    let cardHandleAreaHeight:CGFloat = 64
+    var cardVisible = false
     var nextState:CardState {
         return cardVisible ? .collapsed : .expanded
     }
     
-    // Variable for card view controller
-    var cardViewController:CardViewViewController!
-    
-    // Variable for effects visual effect view
-    var visualEffectView:UIVisualEffectView!
-    
-    // Starting and end card heights will be determined later
-    var endCardHeight:CGFloat = 0
-    var startCardHeight:CGFloat = 0
-    
-    // Current visible state of the card
-    var cardVisible = false
-    
-    // Empty property animator array
     var runningAnimations = [UIViewPropertyAnimator]()
     var animationProgressWhenInterrupted:CGFloat = 0
-    
-    
+    var safe:CGFloat = 0
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .red
         setupCard()
-        
-        
     }
     
     func setupCard() {
-        // Setup starting and ending card height
-        endCardHeight = self.view.frame.height * 0.8
-        startCardHeight = self.view.frame.height * 0.3
-        
-        // Add Visual Effects View
         visualEffectView = UIVisualEffectView()
-        visualEffectView.frame = self.view.bounds
+        visualEffectView.frame = CGRect(x: 0, y: 0, width: view.bounds.height, height: view.bounds.height)
         self.view.addSubview(visualEffectView)
         
-        // Add CardViewController xib to the bottom of the screen, clipping bounds so that the corners can be rounded
-        cardViewController = CardViewViewController(nibName:"CardViewViewController", bundle:nil)
+        cardViewController = CardViewViewController()
+        self.addChild(cardViewController)
         self.view.addSubview(cardViewController.view)
-        cardViewController.view.frame = CGRect(x: 0, y: self.view.frame.height - startCardHeight, width: self.view.bounds.width, height: endCardHeight)
+        
+        let value = view.frame.height - (tabBarController?.tabBar.frame.origin.y)! //chie cao cua tabbar o safe area
+        safe = (tabBarController?.tabBar.frame.height)! - value
+        cardViewController.view.frame = CGRect(x: 0, y: self.view.frame.height - cardHandleAreaHeight - value, width: self.view.bounds.width, height: cardHeight)
+        
         cardViewController.view.clipsToBounds = true
         
-        // Add tap and pan recognizers
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ByDayViewController.handleCardTap(recognzier:)))
-        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(ByDayViewController.handleCardPan(recognizer:)))
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleCardTap(recognzier:)))
+        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handleCardPan(recognizer:)))
         
         cardViewController.handlerView.addGestureRecognizer(tapGestureRecognizer)
         cardViewController.handlerView.addGestureRecognizer(panGestureRecognizer)
+        
+        
     }
-    
-    // Handle tap gesture recognizer
-    @objc
-    func handleCardTap(recognzier:UITapGestureRecognizer) {
+
+    @objc func handleCardTap(recognzier:UITapGestureRecognizer) {
         switch recognzier.state {
-        // Animate card when tap finishes
         case .ended:
-            animateTransitionIfNeeded(state: nextState, duration: 0.9)
+            animateTransition(state: nextState, duration: 0.9)
         default:
             break
         }
     }
     
-    // Handle pan gesture recognizer
-    @objc
-    func handleCardPan (recognizer:UIPanGestureRecognizer) {
+    @objc func handleCardPan (recognizer:UIPanGestureRecognizer) {
         switch recognizer.state {
         case .began:
-            // Start animation if pan begins
             startInteractiveTransition(state: nextState, duration: 0.9)
-            
         case .changed:
-            // Update the translation according to the percentage completed
             let translation = recognizer.translation(in: self.cardViewController.handlerView)
-            var fractionComplete = translation.y / endCardHeight
+            var fractionComplete = translation.y / cardHeight
             fractionComplete = cardVisible ? fractionComplete : -fractionComplete
             updateInteractiveTransition(fractionCompleted: fractionComplete)
         case .ended:
-            // End animation when pan ends
             continueInteractiveTransition()
         default:
             break
         }
+        
     }
-    // Animate transistion function
-    func animateTransitionIfNeeded (state:CardState, duration:TimeInterval) {
-        // Check if frame animator is empty
+    
+    func animateTransition(state:CardState, duration:TimeInterval) {
         if runningAnimations.isEmpty {
-            // Create a UIViewPropertyAnimator depending on the state of the popover view
             let frameAnimator = UIViewPropertyAnimator(duration: duration, dampingRatio: 1) {
                 switch state {
                 case .expanded:
-                    // If expanding set popover y to the ending height and blur background
-                    self.cardViewController.view.frame.origin.y = self.view.frame.height - self.endCardHeight
-                    //self.visualEffectView.effect = UIBlurEffect(style: .light)
-                    
+                    self.cardViewController.view.frame.origin.y = self.view.frame.height - self.cardHeight
                 case .collapsed:
-                    // If collapsed set popover y to the starting height and remove background blur
-                    self.cardViewController.view.frame.origin.y = self.view.frame.height - self.startCardHeight
-                    
-                    self.visualEffectView.effect = nil
+                    self.cardViewController.view.frame.origin.y = self.view.frame.height - self.cardHandleAreaHeight - (self.tabBarController?.tabBar.frame.height)!
                 }
             }
             
-            // Complete animation frame
             frameAnimator.addCompletion { _ in
                 self.cardVisible = !self.cardVisible
                 self.runningAnimations.removeAll()
             }
             
-            // Start animation
             frameAnimator.startAnimation()
-            
-            // Append animation to running animations
             runningAnimations.append(frameAnimator)
             
-            // Create UIViewPropertyAnimator to round the popover view corners depending on the state of the popover
+            
             let cornerRadiusAnimator = UIViewPropertyAnimator(duration: duration, curve: .linear) {
                 switch state {
                 case .expanded:
-                    // If the view is expanded set the corner radius to 30
-                    self.cardViewController.view.layer.cornerRadius = 30
-                    
+                    self.cardViewController.view.layer.cornerRadius = 12
                 case .collapsed:
-                    // If the view is collapsed set the corner radius to 0
                     self.cardViewController.view.layer.cornerRadius = 0
                 }
             }
             
-            // Start the corner radius animation
             cornerRadiusAnimator.startAnimation()
-            
-            // Append animation to running animations
             runningAnimations.append(cornerRadiusAnimator)
+            
+            let blurAnimator = UIViewPropertyAnimator(duration: duration, dampingRatio: 1) {
+                switch state {
+                case .expanded:
+                    self.visualEffectView.effect = UIBlurEffect(style: .dark)
+                case .collapsed:
+                    self.visualEffectView.effect = nil
+                }
+            }
+            
+            blurAnimator.startAnimation()
+            runningAnimations.append(blurAnimator)
             
         }
     }
     
-    // Function to start interactive animations when view is dragged
     func startInteractiveTransition(state:CardState, duration:TimeInterval) {
-        
-        // If animation is empty start new animation
         if runningAnimations.isEmpty {
-            animateTransitionIfNeeded(state: state, duration: duration)
+            animateTransition(state: state, duration: duration)
         }
-        
-        // For each animation in runningAnimations
         for animator in runningAnimations {
-            // Pause animation and update the progress to the fraction complete percentage
             animator.pauseAnimation()
             animationProgressWhenInterrupted = animator.fractionComplete
         }
     }
     
-    // Funtion to update transition when view is dragged
     func updateInteractiveTransition(fractionCompleted:CGFloat) {
-        // For each animation in runningAnimations
         for animator in runningAnimations {
-            // Update the fraction complete value to the current progress
             animator.fractionComplete = fractionCompleted + animationProgressWhenInterrupted
         }
     }
     
-    // Function to continue an interactive transisiton
     func continueInteractiveTransition (){
-        // For each animation in runningAnimations
         for animator in runningAnimations {
-            // Continue the animation forwards or backwards
             animator.continueAnimation(withTimingParameters: nil, durationFactor: 0)
         }
     }
+    
 }
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+//    enum CardState {
+//        case expanded
+//        case collapsed
+//    }
+//    var cardViewController:CardViewViewController!
+//    var visualEffectView: UIVisualEffectView! // hiệu ứng làm mờ
+//    //
+//
+//    let cardHeight:CGFloat = 600 // Chiều cao của card
+//    let cardHandleAreaHeight:CGFloat = 128 // chiều cao của vùng điểu khiển
+//
+//    var cardVisible = false // card cos hiển thị ko
+//    var nextState:CardState{
+//        return cardVisible ? .expanded : .collapsed
+//    }
+//    var runningAnimations = [UIViewPropertyAnimator]()
+//    var animationProgressWhenInterrupted:CGFloat = 0
+//
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//        setupCard()
+//    }
+//
+//    func setupCard() {
+//        visualEffectView = UIVisualEffectView()
+//        visualEffectView.frame = CGRect(x: 0, y: 0, width: view.frame.width + 100, height: view.frame.height)
+//        self.view.addSubview(visualEffectView)
+//
+//        cardViewController = CardViewViewController()
+//        self.addChild(cardViewController)
+//        self.view.addSubview(cardViewController.view)
+//
+//        cardViewController.view.frame = CGRect(x: 0, y: self.view.frame.height - cardHandleAreaHeight - 50, width: self.view.bounds.width, height: cardHeight)
+//
+//        cardViewController.view.clipsToBounds = true
+//
+//        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleCardTap(recognzier:)))
+//        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handleCardPan(recognizer:)))
+//
+//        cardViewController.handlerView.addGestureRecognizer(tapGestureRecognizer)
+//        cardViewController.handlerView.addGestureRecognizer(panGestureRecognizer)
+//    }
+//
+//    @objc func handleCardTap(recognzier:UITapGestureRecognizer) {
+//        switch recognzier.state {
+//        case .ended:
+//            animateTransiton(state: nextState, duration: 0.9)
+//        default:
+//            break
+//        }
+//    }
+//    @objc
+//    func handleCardPan (recognizer:UIPanGestureRecognizer) {
+//        switch recognizer.state {
+//        case .began:
+//            startInteractiveTransition(state: nextState, duration: 0.9)
+//        case .changed:
+//            let translation = recognizer.translation(in: self.cardViewController.handlerView)
+//            var fractionComplete = translation.y / cardHeight
+//            fractionComplete = cardVisible ? fractionComplete : -fractionComplete
+//            updateInteractiveTransition(fractionCompleted: fractionComplete)
+//        case .ended:
+//            continueInteractiveTransition()
+//        default:
+//            break
+//        }
+//
+//    }
+//
+//
+//
+//    func startInteractiveTransition(state:CardState, duration:TimeInterval) {
+//        if runningAnimations.isEmpty {
+//            animateTransiton(state: state, duration: duration)
+//        }
+//        for animator in runningAnimations {
+//            animator.pauseAnimation()
+//            animationProgressWhenInterrupted = animator.fractionComplete
+//            //fractionCompletion: laf % hoan thanh cua animation
+//        }
+//    }
+//
+//    func updateInteractiveTransition(fractionCompleted:CGFloat) {
+//        for animator in runningAnimations {
+//            animator.fractionComplete = fractionCompleted + animationProgressWhenInterrupted
+//            //Tiep tục cái đang dở, ở đây fractionCompletion ta truyền vào
+//        }
+//    }
+//
+//    func continueInteractiveTransition (){
+//        for animator in runningAnimations {
+//            animator.continueAnimation(withTimingParameters: nil, durationFactor: 0)
+//            //0 nghĩa là chỉ dùng thời gian còn lại lúc đầu đã set, ở đây là 0.9
+//        }
+//    }
+//
+//    func animateTransiton (state:CardState, duration:TimeInterval) {
+//        if runningAnimations.isEmpty {
+//            let frameAnimator = UIViewPropertyAnimator(duration: duration, dampingRatio: 1) {
+//                switch state {
+//                case .expanded:
+//                    self.cardViewController.view.frame.origin.y = self.view.frame.height - self.cardHeight
+//                case .collapsed:
+//                    self.cardViewController.view.frame.origin.y = self.view.frame.height - self.cardHandleAreaHeight
+//                }
+//            }
+//
+//            frameAnimator.addCompletion { _ in
+//                self.cardVisible = !self.cardVisible
+//                self.runningAnimations.removeAll()
+//            }
+//
+//            frameAnimator.startAnimation()
+//            runningAnimations.append(frameAnimator)
+//
+//
+//            let cornerRadiusAnimator = UIViewPropertyAnimator(duration: duration, curve: .linear) {
+//                switch state {
+//                case .expanded:
+//                    self.cardViewController.view.layer.cornerRadius = 12
+//                case .collapsed:
+//                    self.cardViewController.view.layer.cornerRadius = 0
+//                }
+//            }
+//
+//            cornerRadiusAnimator.startAnimation()
+//            runningAnimations.append(cornerRadiusAnimator)
+//
+//            let blurAnimator = UIViewPropertyAnimator(duration: duration, dampingRatio: 1) {
+//                switch state {
+//                case .expanded:
+//                    self.visualEffectView.effect = UIBlurEffect(style: .dark)
+//                case .collapsed:
+//                    self.visualEffectView.effect = nil
+//                }
+//            }
+//
+//            blurAnimator.startAnimation()
+//            runningAnimations.append(blurAnimator)
+//
+//        }
+//    }
+//
+//
+//}
+//

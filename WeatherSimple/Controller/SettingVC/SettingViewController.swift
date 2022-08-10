@@ -6,7 +6,9 @@
 //
 
 import UIKit
-
+protocol SettingViewControllerDelegate: AnyObject  {
+    func changeSetting()
+}
 class SettingViewController: UIViewController {
 
     @IBOutlet weak var containView: UIView!
@@ -19,6 +21,8 @@ class SettingViewController: UIViewController {
     @IBOutlet weak var lightShowButton: UIButton!
     @IBOutlet weak var darkShowButton: UIButton!
     @IBOutlet weak var customShowButton: UIButton!
+    
+    var delegate: SettingViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,17 +54,22 @@ class SettingViewController: UIViewController {
         default:
             print("")
         }
+        
+        
     }
     
     func tapmetricMeasureButton(){
         DataManager.shared.changeMeasureType(type: .metric)
+        delegate?.changeSetting()
     }
     func tapenglandMesureButton(){
         DataManager.shared.changeMeasureType(type: .england)
+        delegate?.changeSetting()
         
     }
     func tapcompoudMeasureButton(){
         DataManager.shared.changeMeasureType(type: .compound)
+        delegate?.changeSetting()
     }
     func tapwindDirectionButton(){
         DataManager.shared.changeWindType(type: .direction)

@@ -27,6 +27,7 @@ class ConditionCollectionViewCell: UICollectionViewCell {
     }
 
     @IBAction func actionButton(_ sender: UIButton) {
+        print("More")
         delegate?.tapViewMore()
     }
     func configCell(temperature: String, realFeel: String, realFealShade: String, wind: String, windgust: String, humidity: String){
@@ -35,5 +36,6 @@ class ConditionCollectionViewCell: UICollectionViewCell {
         realFeelShade.text = realFealShade
         windLabel.text = wind
         windGustlabel.text = windgust
+        humidityLabel.text = humidity
     }
 }

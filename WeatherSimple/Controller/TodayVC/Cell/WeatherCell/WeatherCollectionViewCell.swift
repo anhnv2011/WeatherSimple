@@ -30,9 +30,11 @@ class WeatherCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var nextdayRealFeel: UILabel!
    
     var delegate:WeatherCollectionViewCellDelegate?
+    let settingVc = SettingViewController()
     override func awakeFromNib() {
         super.awakeFromNib()
         weatherView.layer.cornerRadius = weatherView.frame.size.width/2
+        settingVc.delegate = self
     }
 
     func configWeatherCell(type: String, daytimelabel: String, image: String, tempe: String, realfeel: String, dayicon: String, daytem: String, dayreal: String, nighticon: String, nighttem: String, nightReal: String, nextdayicon: String, nextdautem: String, nextdayfeel: String){
@@ -55,4 +57,11 @@ class WeatherCollectionViewCell: UICollectionViewCell {
     @IBAction func actionNext(_ sender: Any) {
         delegate?.tapNext()
     }
+}
+extension WeatherCollectionViewCell: SettingViewControllerDelegate {
+    func changeSetting() {
+        print("cell")
+    }
+    
+    
 }

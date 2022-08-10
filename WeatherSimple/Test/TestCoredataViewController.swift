@@ -7,14 +7,23 @@
 
 import UIKit
 import CoreData
-class TestCoredataViewController: UIViewController {
+import Alamofire
+import SwiftyJSON
+import Charts
 
+class TestCoredataViewController: UIViewController, ChartViewDelegate {
+
+    @IBOutlet weak var topview: UIView!
     @IBOutlet weak var tableView: UITableView!
     var arrData = [Location]()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var next12hoursData:[Next12] = []
+    
+   // var barchart = BarChartView()
+    var chartview = CombinedChartView()
     override func viewDidLoad() {
         super.viewDidLoad()
-
+//        2022-08-07T11:59:00+07:00
 //        let newLocation = Location(context: context)
 //        newLocation.key = "1233"
 //        newLocation.localizedName = "ha noi3"
@@ -35,14 +44,77 @@ class TestCoredataViewController: UIViewController {
 //
 //        //get data
 //        fetchData()
-        DataManager.shared.changeMeasureType(type: .metric)
+//        DataManager.shared.changeMeasureType(type: .metric)
+//
+//        let value = DataManager.shared.getCurrentMeasureType()
+//        print(value)
         
-        let value = DataManager.shared.getCurrentMeasureType()
-        print(value)
+//        getdata()
         
+//        var dateString = "2022-08-07T11:59:00+07:00"
+//        let dateFormatt = DateFormatter()
+//        dateFormatt.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+//        let date = dateFormatt.date(from: dateString)
+//
+//        let stringformat = DateFormatter()
+//        stringformat.dateFormat = "dd.MM.yy"
+//        let currentdate = stringformat.string(from: date!)
         
+        chartview.delegate = self
+        //barchart.delegate = self
+    
     }
 
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        topview.addSubview(chartview)
+        chartview.frame = topview.bounds
+        var entry = [BarChartDataEntry]()
+        for x in 1...6 {
+            entry.append(BarChartDataEntry(x: Double(x), y: Double(x + 6)))
+        }
+        
+        let set = BarChartDataSet(entries: entry, label: "test")
+        set.colors = [UIColor.brown]
+        let data = BarChartData(dataSet: set)
+        
+        var linerentry = [ChartDataEntry]()
+        
+        for x in 1...6{
+            linerentry.append(ChartDataEntry(x: Double(x), y: Double(x+2)))
+        }
+        let linerset = LineChartDataSet(entries: linerentry, label: "min")
+        //linerset.colors = ChartColorTemplates.material()
+        let linerdata = LineChartData(dataSet: linerset)
+        
+        let combinedata = CombinedChartData()
+        combinedata.lineData = linerdata
+        combinedata.barData = data
+        chartview.data = combinedata
+      //  chartview.notifyDataSetChanged()
+        
+    }
+    func getdata(){
+        guard let url = URL(string: "http://dataservice.accuweather.com/forecasts/v1/hourly/12hour/353412?apikey=90LKUI4g3wxlc1GAd1Vh1tqFVc1KZvvG&details=true&metric=true") else {
+
+                return
+             }
+             print(url)
+             Alamofire.request(url).responseJSON(completionHandler: { (response) in
+     
+                 guard let value = response.result.value else {
+                     print(APIError.error("Something wrong"))
+                     return
+                 }
+     
+                 let dataJson = JSON(value).arrayValue
+                 let dataResult = dataJson.map({Next12($0)})
+                self.next12hoursData = dataResult
+                print(self.next12hoursData)
+             })
+
+    }
+    
     func fetchData(){
         do {
             self.arrData = try context.fetch(Location.fetchRequest())

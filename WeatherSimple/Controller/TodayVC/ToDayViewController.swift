@@ -13,6 +13,9 @@ import SwiftyJSON
 
 
 class ToDayViewController: UIViewController {
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
     
     @IBOutlet weak var collectionView: UICollectionView!
     let locationManager = CLLocationManager()
@@ -20,7 +23,12 @@ class ToDayViewController: UIViewController {
     let currentLocationURl = DataManager.shared.cacheFileURL(fileName: "currentlocation.json")
     
     var currentLocation = [CurrentLocation]()
-    var next12hoursData = [CurrentLocation]()
+    var next12hoursData = [Next12]()
+    
+    
+    
+    var searchVc:SearchLocationViewController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,35 +37,49 @@ class ToDayViewController: UIViewController {
         
         print(view.bounds.width)
         print(view.bounds.height)
+        let settingvc = SettingViewController()
+        settingvc.delegate = self
         
         //        APICaller.shared.getDayNightDataMetric(locationkey: "353412") { (result) in
         //            print(result)
         //        }
-        getData()
+        
+        // NotificationCenter.default.addObserver(self, selector: #selector(fetNewData), name: .newLocation, object: nil)
+        //        NotificationCenter.default.addObserver(forName: .newLocation, object: nil, queue: OperationQueue.main) { (notification) in
+        //
+        //            print("test")
+        //            let key = DataManager.shared.newLocationkey
+        //            APICaller.shared.getDetailCurrentConditionWeather(locationId: key) { (currentResult) in
+        //                self.currentLocation = currentResult
+        //                DataManager.shared.currentLocationData = currentResult
+        //                self.collectionView.reloadData()
+        //            }
+        //            APICaller.shared.getnex12htWeatherMetric(locationId: key) { (next12result) in
+        //                self.next12hoursData = next12result
+        //                DataManager.shared.next12hData = next12result
+        //                self.collectionView.reloadData()
+        //            }
+        
+        //        }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(fetNewData(notification:)), name: .newLocation, object: nil)
+        
     }
     
-    func getData(){
-        guard let url = URL(string: "http://dataservice.accuweather.com/forecasts/v1/hourly/12hour/353412?apikey=90LKUI4g3wxlc1GAd1Vh1tqFVc1KZvvG&details=true&metric=true") else {
-
-                return
-             }
-             print(url)
-             Alamofire.request(url).responseJSON(completionHandler: { (response) in
-     
-                 guard let value = response.result.value else {
-                     print(APIError.error("Something wrong"))
-                     return
-                 }
-     
-                 let dataJson = JSON(value).arrayValue
-                 let dataResult = dataJson.map({CurrentLocation($0)})
-                self.next12hoursData = dataResult
-                print(self.next12hoursData)
-             })
+    
+    @objc func fetNewData(notification: Notification){
+        //        print("sadasdadasdasdasdadasdsad")
+        //        print(searchVc?.passdatatest )
+        print((notification.userInfo?["location"])! as! String)
+        
     }
+    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
+        //        let value = DataManager.shared.getCurrentMeasureType()
+        //print(currentLocation)
+        collectionView.reloadData()
     }
     
     func configureCollectionView(){
@@ -84,26 +106,26 @@ extension ToDayViewController: CLLocationManagerDelegate{
             let lon = String(location.coordinate.longitude)
             print("lat: \(lat)")
             print("lon: \(lon)")
-//            APICaller.shared.getLocationByGeoposition(lat: lat, lon: lon) { (result) in
-//                //                APICaller.shared.getDayNightDataMetric(locationkey: result) { (daynight) in
-//                //                    self.daynightData = daynight
-//                //                    DataManager.shared.daynightData = daynight
-//                //                    self.collectionView.reloadData()
-//                //                }
-//
-//                APICaller.shared.getDetailCurrentConditionWeather(locationId: result) { (currentResult) in
-//                    self.currentLocation = currentResult
-//                    DataManager.shared.currentLocationData = currentResult
-//                    self.collectionView.reloadData()
-//                }
-//                APICaller.shared.getnex12htWeatherMetric(locationId: result) { (next12result) in
-//                    self.next12hoursData = next12result
-//                    DataManager.shared.currentLocationData = next12result
-//                    print(self.next12hoursData)
-//                    self.collectionView.reloadData()
-//                }
+            APICaller.shared.getLocationByGeoposition(lat: lat, lon: lon) { (result) in
+                //                                APICaller.shared.getDayNightDataMetric(locationkey: result) { (daynight) in
+                //                                    self.daynightData = daynight
+                //                                    DataManager.shared.daynightData = daynight
+                //                                    self.collectionView.reloadData()
+                //                                }
                 
-//            }
+                APICaller.shared.getDetailCurrentConditionWeather(locationId: result) { (currentResult) in
+                    self.currentLocation = currentResult
+                    DataManager.shared.currentLocationData = currentResult
+                    self.collectionView.reloadData()
+                }
+                APICaller.shared.getnex12htWeatherMetric(locationId: result) { (next12result) in
+                    self.next12hoursData = next12result
+                    DataManager.shared.next12hData = next12result
+//                    print(self.next12hoursData)
+                    self.collectionView.reloadData()
+                }
+                
+            }
         }
     }
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
@@ -136,13 +158,22 @@ extension ToDayViewController:UICollectionViewDelegate, UICollectionViewDelegate
                 let currentdata = currentLocation[0]
                 
                 let next1 = next12hoursData[0]
-            
+                
                 let next6 = next12hoursData[5]
                 let next12 = next12hoursData[11]
                 let value = DataManager.shared.getCurrentMeasureType()
                 var type = ""
                 //bind data
-                let daytime = currentdata.LocalObservationDateTime ?? ""
+                
+                let dateString = currentdata.LocalObservationDateTime ?? ""
+                let dateFormatt = DateFormatter()
+                dateFormatt.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+                let date = dateFormatt.date(from: dateString)
+                
+                let stringformat = DateFormatter()
+                stringformat.dateFormat = "dd.MM.yy"
+                let daytime = stringformat.string(from: date!)
+                
                 let image = String(currentdata.WeatherIcon ?? 1)
                 let next1image = String(next1.WeatherIcon ?? 1)
                 let next6image = String(next6.WeatherIcon ?? 1)
@@ -157,23 +188,47 @@ extension ToDayViewController:UICollectionViewDelegate, UICollectionViewDelegate
                 var next1feel = ""
                 var next6feel = ""
                 var next12feel = ""
-                
+                print(value)
                 if value == MeasureType.metric.rawValue {
                     type = "C"
                     temper = String(currentdata.Temperature?.Metric?.Value ?? 0)
-                    next1temper =  String((next1.Temperature?.Metric?.Value!)!)
-                    next6temper =  String(next6.Temperature?.Metric?.Value ?? 0)
-                    next12temper =  String(next12.Temperature?.Metric?.Value ?? 0)
+                    //
+                    //
+                    next1temper = String(next1.Temperature?.Value ?? 0)
+                    next6temper = String(next1.Temperature?.Value ?? 0)
+                    next12temper = String(next1.Temperature?.Value ?? 0)
                     
-                    feel = String(currentdata.RealFeelTemperature?.Metric?.Value ?? 0)
-                    next1feel = String(next1.RealFeelTemperature?.Metric?.Value ?? 0)
-                    next6feel = String(next6.RealFeelTemperature?.Metric?.Value ?? 0)
-                    next12feel = String(next12.RealFeelTemperature?.Metric?.Value ?? 0)
+                    feel = "Real Feel: " + String(currentdata.RealFeelTemperature?.Metric?.Value ?? 0)
+                    next1feel = String(next1.RealFeelTemperature?.Value ?? 0)
+                    next6feel = String(next6.RealFeelTemperature?.Value ?? 0)
+                    next12feel = String(next12.RealFeelTemperature?.Value ?? 0)
                     
                     
                 } else if value == MeasureType.england.rawValue {
+                    type = "F"
+                    temper = String(currentdata.Temperature?.Imperial?.Value ?? 0)
+                    next1temper = String(Double(next1.Temperature?.Value ?? 0)*1.8 + 32)
+                    next6temper = String(Double(next6.Temperature?.Value ?? 0)*1.8 + 32)
+                    next12temper = String(Double(next12.Temperature?.Value ?? 0)*1.8 + 32)
+                    
+                    feel = "Real Feel: " + String(currentdata.RealFeelTemperature?.Metric?.Value ?? 0)
+                    next1feel = String(next1.RealFeelTemperature?.Value ?? 0)
+                    next6feel = String(next6.RealFeelTemperature?.Value ?? 0)
+                    next12feel = String(next12.RealFeelTemperature?.Value ?? 0)
                     
                 } else {
+                    type = "C"
+                    temper = String(currentdata.Temperature?.Metric?.Value ?? 0)
+                    //
+                    //
+                    next1temper = String(next1.Temperature?.Value ?? 0)
+                    next6temper = String(next1.Temperature?.Value ?? 0)
+                    next12temper = String(next1.Temperature?.Value ?? 0)
+                    
+                    feel = "Real Feel: " + String(currentdata.RealFeelTemperature?.Metric?.Value ?? 0)
+                    next1feel = String(next1.RealFeelTemperature?.Value ?? 0)
+                    next6feel = String(next6.RealFeelTemperature?.Value ?? 0)
+                    next12feel = String(next12.RealFeelTemperature?.Value ?? 0)
                     
                     
                 }
@@ -186,6 +241,40 @@ extension ToDayViewController:UICollectionViewDelegate, UICollectionViewDelegate
             return cell
         } else if indexPath.section == 1 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ConditionCollectionViewCell", for: indexPath) as! ConditionCollectionViewCell
+            cell.delegate = self
+            if currentLocation.count > 0 {
+                let data = currentLocation[0]
+                let mesureType = DataManager.shared.getCurrentWindType()
+                let windType = DataManager.shared.getCurrentWindType()
+                var temper = ""
+                var feel = ""
+                var shade = ""
+                var wind = ""
+                var windgust = ""
+                let hum = String(data.RelativeHumidity ?? 0)
+                if mesureType == MeasureType.metric.rawValue {
+                    temper = String(data.Temperature?.Metric?.Value ?? 0) + "ºC"
+                    feel = String(data.RealFeelTemperature?.Metric?.Value ?? 0) + "ºC"
+                    shade = String(data.RealFeelTemperatureShade?.Metric?.Value ?? 0) + "ºC"
+                    wind = String(data.Wind?.Speed?.Metric?.Value ?? 0) + "km/h"
+                    windgust = String(data.WindGust?.Speed?.Metric?.Value ?? 0) + "km/h"
+                } else if mesureType == MeasureType.england.rawValue {
+                    temper = String(data.Temperature?.Imperial?.Value ?? 0) +  "ºF"
+                    feel = String(data.RealFeelTemperature?.Imperial?.Value ?? 0) + "ºF"
+                    shade = String(data.RealFeelTemperatureShade?.Imperial?.Value ?? 0) + "ºF"
+                    wind = String(data.Wind?.Speed?.Imperial?.Value ?? 0) + "dặm/h"
+                    windgust = String(data.WindGust?.Speed?.Imperial?.Value ?? 0) + "dặm/h"
+                } else {
+                    temper = String(data.Temperature?.Metric?.Value ?? 0) + "ºC"
+                    feel = String(data.RealFeelTemperature?.Metric?.Value ?? 0) + "ºC"
+                    shade = String(data.RealFeelTemperatureShade?.Metric?.Value ?? 0) + "ºC"
+                    wind = String(data.Wind?.Speed?.Imperial?.Value ?? 0) + "dặm/h"
+                    wind = String(data.WindGust?.Speed?.Imperial?.Value ?? 0) + "dặm/h"
+                }
+                cell.configCell(temperature: temper, realFeel: feel, realFealShade: shade, wind: wind, windgust: windgust, humidity: hum)
+                
+            }
+            
             return cell
         } else if indexPath.section == 2 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AirConditonCollectionViewCell", for: indexPath) as! AirConditonCollectionViewCell
@@ -216,6 +305,9 @@ extension ToDayViewController:UICollectionViewDelegate, UICollectionViewDelegate
 extension ToDayViewController: ConditionCollectionViewCellDelegate{
     func tapViewMore() {
         navigationController?.pushViewController(MoreConditionDeatailViewController(), animated: true)
+        ////        navigationController?.pushViewController(ByDayViewController(), animated: true)
+        //        let vc = ByDayViewController()
+        //        self.tabBarController?.selectedIndex = 2
     }
     
     
@@ -223,7 +315,29 @@ extension ToDayViewController: ConditionCollectionViewCellDelegate{
 
 extension ToDayViewController: WeatherCollectionViewCellDelegate {
     func tapNext() {
-        print("tap next")
+    }
+    
+    
+}
+
+extension ToDayViewController: SettingViewControllerDelegate{
+    func changeSetting() {
+        collectionView.reloadData()
+    }
+    
+    
+}
+extension ToDayViewController: SearchLocationViewControllerDelegate {
+    func choseLocation(searchLocation: SearchLocation) {
+        
+    }
+    
+    func changeLocation(location: Location) {
+        
+    }
+    
+    func sendata(id: String) {
+        print(id)
     }
     
     

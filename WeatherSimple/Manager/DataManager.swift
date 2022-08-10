@@ -9,13 +9,20 @@ import Foundation
 import CoreData
 import UIKit
 import SwiftyJSON
+
+
+extension Notification.Name {
+    static let newLocation = Notification.Name(rawValue: "NewLocation")
+}
+
 class DataManager {
     static let shared = DataManager()
+    var newLocationkey = ""
     
     //MARK:- Api current save
     var currentLocationData = [CurrentLocation]()
     var daynightData:DayNight?
-    var next12hData = [CurrentLocation]()
+    var next12hData = [Next12]()
     
     //MARK:- User defaultValue
     //Key

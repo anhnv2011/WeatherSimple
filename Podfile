@@ -11,4 +11,5 @@ pod 'Alamofire', '~> 4.9.1'
 pod 'SwiftyJSON'
 pod 'SDWebImage'
 pod 'EzPopup'
+pod 'Charts'
 end
