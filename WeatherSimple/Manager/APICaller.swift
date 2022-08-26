@@ -135,7 +135,7 @@ struct APICaller {
     }
     
     func getNext5DayWeather(locationid: String, completion: @escaping ((Next5day) -> Void)){
-        guard let url = URL(string: "\(Constants.baseURL)forecasts/v1/daily/5day/\(locationid)?apikey=\(Constants.API_KEY)&details=false&metric=true" ) else {
+        guard let url = URL(string: "\(Constants.baseURL)forecasts/v1/daily/5day/\(locationid)?apikey=\(Constants.API_KEY)&details=true&metric=true" ) else {
             print(APIError.errorURL)
             return
         }

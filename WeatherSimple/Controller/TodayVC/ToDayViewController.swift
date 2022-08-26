@@ -152,6 +152,7 @@ extension ToDayViewController:UICollectionViewDelegate, UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.section == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WeatherCollectionViewCell", for: indexPath) as! WeatherCollectionViewCell
+            cell.backgroundColor = UIColor(named: "customcolor")
             if currentLocation.count > 0, next12hoursData.count > 0 {
                 let currentdata = currentLocation[0]
                 

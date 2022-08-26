@@ -40,6 +40,7 @@
                                 </view>
                                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Mge-DZ-3Xj">
                                     <rect key="frame" x="154.5" y="25" width="105" height="32"/>
+                                    <color key="backgroundColor" red="0.1862865984" green="0.32798838619999998" blue="0.4196466506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <segments>
                                         <segment title="Day"/>
                                         <segment title="Night"/>
@@ -49,7 +50,7 @@
                                     </connections>
                                 </segmentedControl>
                             </subviews>
-                            <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="C1s-N4-LkH" firstAttribute="top" secondItem="bfp-1D-IV1" secondAttribute="top" constant="8" id="B4J-Kc-a3t"/>
                                 <constraint firstItem="Mge-DZ-3Xj" firstAttribute="centerX" secondItem="bfp-1D-IV1" secondAttribute="centerX" id="ZOg-N4-ueQ"/>
@@ -127,7 +128,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <color key="backgroundColor" red="0.1862865984" green="0.32798838619999998" blue="0.4196466506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="Oqi-VA-qAu" firstAttribute="leading" secondItem="pGy-2f-xrF" secondAttribute="leading" constant="8" id="1uh-MT-Y2x"/>
                         <constraint firstItem="Zke-VZ-sah" firstAttribute="trailing" secondItem="9zm-rY-WpI" secondAttribute="trailing" id="4dl-6X-4ps"/>
@@ -175,9 +176,6 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemOrangeColor">
-            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Charts
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -17,12 +18,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
         window?.windowScene = scene
         
-//        let vc = MainTabBarViewController()
-        let vc = UINavigationController(rootViewController: MainTabBarViewController())
+        let vc = MainTabBarViewController()
+//        let vc = UINavigationController(rootViewController: MainTabBarViewController())
 //        let vc = TestCoredataViewController()
-//        let vc = tViewController()
+      //  let vc = SettingViewController()
+//        let vc = MenuViewController()
+//        let vc = ByDayViewController()
         window?.rootViewController = vc
         window?.makeKeyAndVisible()
+        
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

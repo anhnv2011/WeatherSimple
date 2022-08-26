@@ -28,7 +28,7 @@ class MenuHeaderView: UITableViewHeaderFooterView {
         let label = UILabel()
         label.text = "Cài đặt"
         label.font = UIFont.boldSystemFont(ofSize: 17)
-        
+        label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
         
@@ -47,6 +47,7 @@ class MenuHeaderView: UITableViewHeaderFooterView {
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         setupLayout()
+     
         settingButton.addTarget(self, action: #selector(tapSettingButton), for: .touchUpInside)
     }
     

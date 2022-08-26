@@ -20,7 +20,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Bc-9M-dv0" userLabel="containView">
                         <rect key="frame" x="0.0" y="0.0" width="415" height="898"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Amq-io-VaY">
+                            <view alpha="0.55000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Amq-io-VaY">
                                 <rect key="frame" x="20.666666666666657" y="100.00000000000003" width="373.66666666666674" height="373.66666666666674"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="15" translatesAutoresizingMaskIntoConstraints="NO" id="IJe-JJ-wPw">
@@ -73,7 +73,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                <color key="backgroundColor" red="0.1862865984" green="0.32798838619999998" blue="0.4196466506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Amq-io-VaY" secondAttribute="height" multiplier="1:1" id="1aw-wY-vAc"/>
                                     <constraint firstItem="fbv-EE-gMa" firstAttribute="top" secondItem="ZeH-gK-Uv8" secondAttribute="top" id="3Ll-2z-4yG"/>
@@ -276,7 +276,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" red="0.00069114554209999998" green="0.66723716259999999" blue="0.88393038509999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.1862865984" green="0.32798838619999998" blue="0.4196466506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sld-vJ-hzj">
                                 <rect key="frame" x="107.66666666666669" y="7.9999999999999982" width="200" height="20.333333333333329"/>
@@ -284,11 +284,11 @@
                                     <constraint firstAttribute="width" constant="200" id="dht-bJ-zY9"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.1862865984" green="0.32798838619999998" blue="0.4196466506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Amq-io-VaY" firstAttribute="centerX" secondItem="1Bc-9M-dv0" secondAttribute="centerX" id="37K-cC-8qi"/>
                             <constraint firstItem="Pky-aa-lA9" firstAttribute="leading" secondItem="1Bc-9M-dv0" secondAttribute="leading" constant="16" id="Cmw-jr-oIM"/>
@@ -327,6 +327,9 @@
                 <outlet property="nightTemperatureLabel" destination="q0H-3J-uoR" id="WPe-aS-Z1b"/>
                 <outlet property="temperatureLabel" destination="ZeH-gK-Uv8" id="J7f-fh-FAD"/>
                 <outlet property="typeLable" destination="UAG-YU-92K" id="Rsi-25-jUN"/>
+                <outlet property="view1" destination="mxG-gb-MM7" id="3zt-9p-tra"/>
+                <outlet property="view2" destination="vug-U3-s7s" id="JVs-v1-31K"/>
+                <outlet property="view3" destination="R4a-sX-kVR" id="yRI-Al-lSx"/>
                 <outlet property="weatherView" destination="Amq-io-VaY" id="bFa-kG-cJ0"/>
             </connections>
             <point key="canvasLocation" x="-118.45794392523364" y="151.61987041036718"/>
@@ -335,14 +338,8 @@
     <resources>
         <image name="1" width="75" height="45"/>
         <image name="15" width="75" height="45"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemGray3Color">
             <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemYellowColor">
-            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

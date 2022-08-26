@@ -17,7 +17,7 @@ extension Notification.Name {
 
 class DataManager {
     static let shared = DataManager()
-    var newLocationkey = ""
+    var newLocationkey = "353412"
     
     //MARK:- Api current save
     var currentLocationData = [CurrentLocation]()

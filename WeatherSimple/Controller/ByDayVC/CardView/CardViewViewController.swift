@@ -20,24 +20,29 @@ class CardViewViewController: UIViewController {
     @IBOutlet weak var handlerView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.next5dayData = DataManager.shared.next5dData
-        print(next5dayData)
+      // self.next5dayData = DataManager.shared.next5dData
+        let locationId = DataManager.shared.newLocationkey
+        fetchData(locationId: locationId)
     }
-
-
+    func fetchData(locationId: String){
+        APICaller.shared.getNext5DayWeather(locationid: locationId) { (result) in
+            self.next5dayData = result
+           
+        }
+    }
     @IBAction func changeDayState(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0 {
-            changeToDay()
+//            changeToDay()
         } else if sender.selectedSegmentIndex == 1 {
-            changeToNight()
+//            changeToNight()
         }
     }
     
     func changeToDay(){
         if next5dayData != nil {
             let data = next5dayData?.DailyForecasts
-            
-            let dateString = data?[0].Date ?? ""
+            print(data)
+            let dateString = data![0].Date ?? ""
             let dateFormatt = DateFormatter()
             dateFormatt.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
             let date = dateFormatt.date(from: dateString)

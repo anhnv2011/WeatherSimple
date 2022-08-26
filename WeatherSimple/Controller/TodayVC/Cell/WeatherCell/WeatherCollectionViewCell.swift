@@ -11,6 +11,9 @@ protocol WeatherCollectionViewCellDelegate: AnyObject {
 }
 class WeatherCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var view3: UIView!
+    @IBOutlet weak var view2: UIView!
+    @IBOutlet weak var view1: UIView!
     @IBOutlet weak var typeLable: UILabel!
     @IBOutlet weak var weatherView: UIView!
     @IBOutlet weak var containView: UIView!
@@ -35,6 +38,10 @@ class WeatherCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         weatherView.layer.cornerRadius = weatherView.frame.size.width/2
         settingVc.delegate = self
+        view1.layer.cornerRadius = 20
+        view2.layer.cornerRadius = 20
+        view3.layer.cornerRadius = 20
+
     }
 
     func configWeatherCell(type: String, daytimelabel: String, image: String, tempe: String, realfeel: String, dayicon: String, daytem: String, dayreal: String, nighticon: String, nighttem: String, nightReal: String, nextdayicon: String, nextdautem: String, nextdayfeel: String){

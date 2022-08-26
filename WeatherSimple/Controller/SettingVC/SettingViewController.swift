@@ -27,9 +27,29 @@ class SettingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-       title = "Setting"
+        title = "Setting"
+        setupUI()
     }
-
+    
+    func setupUI(){
+        englandMesureButton.layer.cornerRadius = 24
+        englandMesureButton.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
+        
+        compoudMeasureButton.layer.cornerRadius = 24
+        compoudMeasureButton.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMaxXMaxYCorner]
+        
+        windMetricButton.layer.cornerRadius = 24
+        windMetricButton.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
+        
+        windRadiusButton.layer.cornerRadius = 24
+        windRadiusButton.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMaxXMaxYCorner]
+        
+        lightShowButton.layer.cornerRadius = 24
+        lightShowButton.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
+       
+        customShowButton.layer.cornerRadius = 24
+        customShowButton.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMaxXMaxYCorner]
+    }
     
     @IBAction func actionButton(_ sender: UIButton) {
         
